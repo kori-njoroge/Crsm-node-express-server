@@ -7,20 +7,23 @@ GO
 -- USERS TABLE
 CREATE TABLE users
 (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    email VARCHAR(255) UNIQUE NOT NULL,
+    id INT PRIMARY KEY IDENTITY(105,1),
     full_name VARCHAR(200) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    [role] VARCHAR(50) NOT NULL
+    phone VARCHAR(30) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    [role] VARCHAR(50) NOT NULL,
+    joined_at DATE NOT NULL,
+    [password] NVARCHAR(255) NOT NULL
 );
+
 
 -- CUSTOMERS TABLE
 CREATE TABLE customers
 (
-    id INT PRIMARY KEY IDENTITY(1,1),
+    id INT PRIMARY KEY ,
     full_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    phone VARCHAR(20) UNIQUE NOT NULL,
+    phone VARCHAR(30) UNIQUE NOT NULL,
     joined_At DATE NOT NULL,
     loyalty_points INT DEFAULT 0
 );

@@ -4,15 +4,17 @@ GO
 -- USERS STORED PROCEDURES---
 -- 1.Adding a user;
 CREATE PROCEDURE add_user
+  @full_name VARCHAR(255),
+  @phone VARCHAR(30),
   @email VARCHAR(255),
-  @password VARCHAR(255),
-  @role VARCHAR(50)
+  @role VARCHAR(50),
+  @password VARCHAR(255)
 AS
 BEGIN
   INSERT INTO users
-    (email, [password], [role])
+    (full_name,phone,email, [role],joined_at,[password])
   VALUES
-    (@email, @password, @role)
+    (@full_name, @phone, @email, @role, GETDATE(), @password)
 END
 GO
 
@@ -24,6 +26,8 @@ BEGIN
   FROM users
 END
 GO
+
+
 
 --3. Getting single user
 CREATE PROCEDURE get_single_users
@@ -39,15 +43,23 @@ GO
 --4. Adding Customer {called with add user procedure}
 CREATE PROCEDURE add_customer
   @full_name VARCHAR(255),
-  @email VARCHAR(255),
-  @phone VARCHAR(20),
-  @joined_At DATE
+  @email VARCHAR(255) ,
+  @phone VARCHAR(20) 
+
 AS
 BEGIN
-  INSERT INTO customers
-    (full_name, email, phone, joined_At)
+  DECLARE @cust_id  INT
+  INSERT INTO users
+    (full_name,phone,email, [role],joined_at,[password])
   VALUES
-    (@full_name, @email, @phone, @joined_At)
+    (@full_name, @phone, @email, 'customer', GETDATE(), 'pass'+ @phone)
+  -- getting id
+  SET @cust_id = SCOPE_IDENTITY()
+  -- updating cutomer table
+  INSERT INTO customers
+    (id,full_name, email, phone, joined_At)
+  VALUES
+    (@cust_id,@full_name, @email, @phone, GETDATE())
 END
 GO
 
@@ -188,11 +200,12 @@ BEGIN
   IF EXISTS (SELECT *
   FROM categories
   WHERE name = @name)
-    BEGIN
+  BEGIN
     PRINT 'Category already exists'
     RETURN
   END
-  GO
+END
+GO
 
 
 -- Updating category
@@ -221,40 +234,42 @@ GO
 -- PRODUCTS
 -- 1. Add product
 CREATE PROCEDURE add_product
-    @name VARCHAR(255),
-    @price FLOAT,
-    @items_added INT,
-    @added_on DATE,
-    @category_id INT
+  @name VARCHAR(255),
+  @price FLOAT,
+  @items_added INT,
+  @added_on DATE,
+  @category_id INT
 AS
 BEGIN
-    INSERT INTO products ([name], price, items_added, added_on, category_id)
-    VALUES (@name, @price, @items_added, @added_on, @category_id)
+  INSERT INTO products
+    ([name], price, items_added, added_on, category_id)
+  VALUES
+    (@name, @price, @items_added, @added_on, @category_id)
 END
 GO
 
 
 -- 2. Update product
 CREATE PROCEDURE update_product
-    @id INT,
-    @name VARCHAR(255),
-    @price FLOAT,
-    @items_added INT,
-    @added_on DATE,
-    @category_id INT
+  @id INT,
+  @name VARCHAR(255),
+  @price FLOAT,
+  @items_added INT,
+  @added_on DATE,
+  @category_id INT
 AS
 BEGIN
-    UPDATE products
+  UPDATE products
     SET [name] = @name, price = @price, items_added = @items_added, added_on = @added_on, category_id = @category_id
     WHERE id = @id
 END
 GO
 -- 3. Delete product
 CREATE PROCEDURE delete_product
-    @id INT
+  @id INT
 AS
 BEGIN
-    DELETE FROM products
+  DELETE FROM products
     WHERE id = @id
 END
 GO
@@ -262,18 +277,18 @@ GO
 CREATE PROCEDURE get_products
 AS
 BEGIN
-    SELECT *
-    FROM products
+  SELECT *
+  FROM products
 END
 GO
 --5. Query single product
 CREATE PROCEDURE get_product_by_id
-    @prod_id INT
+  @prod_id INT
 AS
 BEGIN
-    SELECT *
-    FROM products
-    WHERE id = @prod_id
+  SELECT *
+  FROM products
+  WHERE id = @prod_id
 END
 GO
 
