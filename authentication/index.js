@@ -6,4 +6,4 @@ const app = express()
 
 
 const port = process.env.PORT || 6010
-app.listen(port, console.log(`Auth app running on ${port}`))
+app.listen(port, () => { console.log(`Auth app running on ${port}`) })
