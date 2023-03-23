@@ -1,0 +1,15 @@
+{
+  "name": "reports",
+  "version": "1.0.0",
+  "description": "Service handling all the reports of the application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kori Njoroge",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}
