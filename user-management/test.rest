@@ -2,12 +2,12 @@ GET  http://localhost:5000/users/home
 
 
 
-
+# all users
 ###
 GET    http://localhost:5000/users/
 
 
-
+# add users
 ###
 POST   http://localhost:5000/users/signup
 Content-Type: application/json
@@ -20,7 +20,7 @@ Content-Type: application/json
     "password":"mypass1"
 }
 
-
+# login to the system
 ###
 POST  http://localhost:5000/users/login
 Content-Type: application/json
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 }
 
-
+# add customer
 ###
 POST  http://localhost:5000/users/add-customer
 Content-Type: application/json
@@ -41,3 +41,19 @@ Content-Type: application/json
     "phone":"254706306400",
     "email":"marksmsee@gmail.com"
 }
+
+
+# all customers
+###
+GET   http://localhost:5000/users/all-customers
+
+
+# single user
+###
+POST    http://localhost:5000/users/single-customer
+Content-Type: application/json
+
+{
+    "phone":"254706306400"
+}
+

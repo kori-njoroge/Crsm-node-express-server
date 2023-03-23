@@ -60,7 +60,6 @@ module.exports = {
 
     //customers
     addCustomer: async (req, res) => {
-        console.log("first")
         const { fullName, phone, email } = req.body
         try {
             await pool.connect()
@@ -69,9 +68,33 @@ module.exports = {
                 .input('email',email)
                 .input('phone',phone)
                 .execute(`add_customer`)
-            res.json(data)
+            res.json(data.recordset)
         } catch (error) {
             res.json(error)
         }
+    },
+    getCustomers:async(req,res) =>{
+        try {
+            await pool.connect()
+            let data = await pool.request().execute(`get_customers`)
+            res.json(data.recordset)
+        } catch (error) {
+            res.send(error.message)
+        }
+    },
+    singleCustomer:async(req, res) =>{
+        const{phone}= req.body
+        try {
+            await pool.connect();
+            let data = await pool.request()
+            .input('phone',phone)
+            .execute(`get_single_customer`)
+            !data.recordset? res.json("No records found"): res.json(data.recordset)
+        } catch (error) {
+            res.json(error.message)
+        }
+    },
+    editCustomer:async(req, res)=>{
+
     }
 }
