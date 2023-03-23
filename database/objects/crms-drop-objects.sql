@@ -1,0 +1,11 @@
+USE crms_DB
+Go
+
+
+DROP TABLE IF EXISTS line_items;
+DROP TABLE IF EXISTS sales;
+DROP TABLE IF EXISTS reports;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS users;
