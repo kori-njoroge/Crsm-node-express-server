@@ -1,12 +1,16 @@
 {
   "name": "authentication",
   "version": "1.0.0",
-  "description": "",
+  "description": " Service handling authorization and authentication(jwt tokens, access)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "kori Njoroge",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
 }
