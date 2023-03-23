@@ -1,12 +1,15 @@
 {
   "name": "background-services",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "author": "kori Njoroge",
   "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
 }
