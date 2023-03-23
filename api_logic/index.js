@@ -9,7 +9,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // Rules for routing requests to microservices
 const salesProxy = createProxyMiddleware('/sales', { target: 'http://localhost:3001' });
-const usersProxy = createProxyMiddleware('/users', { target: 'http://localhost:3002' });
+const usersProxy = createProxyMiddleware('/users', { target: 'http://localhost:4000' });
 const productsProxy = createProxyMiddleware('/products', { target: 'http://localhost:8000' });
 
 // Use the proxy middleware to forward requests to the appropriate microservice
