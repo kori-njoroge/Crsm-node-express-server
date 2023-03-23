@@ -1,0 +1,18 @@
+USE crms_DB
+GO
+
+DROP PROCEDURE IF EXISTS add_user
+DROP PROCEDURE IF EXISTS get_users
+DROP PROCEDURE IF EXISTS get_single_users
+DROP PROCEDURE IF EXISTS add_customer
+DROP PROCEDURE IF EXISTS get_customers
+DROP PROCEDURE IF EXISTS get_single_customer
+DROP PROCEDURE IF EXISTS add_sale
+DROP PROCEDURE IF EXISTS update_sale_state
+DROP PROCEDURE IF EXISTS get_all_sales_with_products
+DROP PROCEDURE IF EXISTS get_sale_details
+DROP PROCEDURE IF EXISTS add_notification
+DROP PROCEDURE IF EXISTS get_notitications
+DROP PROCEDURE IF EXISTS add_category
+DROP PROCEDURE IF EXISTS update_category
+DROP PROCEDURE IF EXISTS delete_category
