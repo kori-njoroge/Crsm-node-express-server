@@ -14,8 +14,8 @@ CREATE TABLE users
     [role] VARCHAR(50) NOT NULL,
     joined_at DATE NOT NULL,
     [password] NVARCHAR(255) NOT NULL
-);
-
+)
+GO
 
 -- CUSTOMERS TABLE
 CREATE TABLE customers
@@ -26,7 +26,8 @@ CREATE TABLE customers
     phone VARCHAR(30) UNIQUE NOT NULL,
     joined_At DATE NOT NULL,
     loyalty_points INT DEFAULT 0
-);
+)
+Go
 
 -- CATEGORIES TABLE
 CREATE TABLE categories
@@ -34,7 +35,8 @@ CREATE TABLE categories
     id INT PRIMARY KEY IDENTITY(1,1),
     [name] VARCHAR(255) UNIQUE NOT NULL,
     approved BIT DEFAULT 0
-);
+)
+GO
 
 -- PRODUCTS TABLE
 CREATE TABLE products
@@ -46,7 +48,8 @@ CREATE TABLE products
     added_on DATE NOT NULL,
     category_id INT FOREIGN KEY REFERENCES categories(id),
     approved BIT DEFAULT 0
-);
+)
+GO
 
 -- SALES TABLE
 CREATE TABLE sales
@@ -56,8 +59,8 @@ CREATE TABLE sales
     made_by INT FOREIGN KEY REFERENCES users(id),
     sale_date DATE NOT NULL,
     sale_state VARCHAR(50) CHECK (sale_state IN ('completed', 'refunded'))
-);
-
+)
+GO
 -- LINE ITEMS TABLE
 CREATE TABLE line_items
 (
@@ -66,7 +69,8 @@ CREATE TABLE line_items
     product_id INT FOREIGN KEY REFERENCES products(id),
     quantity INT NOT NULL,
     price FLOAT NOT NULL
-);
+)
+GO
 
 -- NOTIFICATIONS TABLE
 CREATE TABLE notifications
@@ -74,5 +78,6 @@ CREATE TABLE notifications
     id INT PRIMARY KEY IDENTITY(1,1),
     [message] TEXT NOT NULL,
     notification_date DATE NOT NULL
-);
+)
+GO
 

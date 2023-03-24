@@ -83,6 +83,23 @@ BEGIN
 END
 GO
 
+-- 7. edit customer details
+CREATE PROCEDURE update_customer
+    @customer_id INT,
+    @new_full_name VARCHAR(255) = NULL,
+    @new_email VARCHAR(255) = NULL,
+    @new_phone VARCHAR(30) = NULL
+AS
+BEGIN
+    UPDATE customers
+    SET 
+        full_name = ISNULL(@new_full_name, full_name),
+        email = ISNULL(@new_email, email),
+        phone = ISNULL(@new_phone, phone)
+    WHERE id = @customer_id;
+END;
+GO
+
 -- SALES STORED PROCEDURES.
 -- 1. Make a sale
 CREATE PROCEDURE add_sale
