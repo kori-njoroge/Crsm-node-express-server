@@ -1,0 +1,78 @@
+GET  http://localhost:5000/users/home
+
+###
+GET    http://localhost:4000/mien/
+
+
+# background services
+###
+GET http://localhost:4000/notifications/
+
+
+# all users
+###
+GET    http://localhost:5000/users/
+
+
+# add users
+###
+POST   http://localhost:4000/users/signup
+Content-Type: application/json
+
+{
+    "fullName":"jacob Mwasiwa",
+    "phone":"254706306400",
+    "email":"marak@gmail.com",
+    "role":"staff",
+    "password":"mypass1"
+}
+
+# login to the system
+###
+POST  http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "email":"marak@gmail.com",
+    "password":"myass1"
+
+}
+
+# add customer
+###
+POST  http://localhost:4000/users/add-customer
+Content-Type: application/json
+
+{
+    "fullName":"Mark Msee",
+    "phone":"254706307400",
+    "email":"marksmsee@gmail.com"
+}
+
+
+# all customers
+###
+GET   http://localhost:4000/users/all-customers
+
+
+# single user
+###
+POST    http://localhost:4000/users/single-customer
+Content-Type: application/json
+
+{
+    "phone":"2478909009"
+}
+
+
+# edit customer
+###
+POST http://localhost:4000/users/edit-customer
+Content-Type: application/json
+
+{
+    "id":"106",
+    "email":"jayagain@example.com",
+    "phone":"2478909009"
+}
+
