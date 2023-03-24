@@ -1,1 +1,0 @@
-Service dealing with all the activities done to a products eg create, delete, update query the product or products data
