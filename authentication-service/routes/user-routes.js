@@ -13,7 +13,7 @@ userRouter.post('/login', validateJwtTokenUsers, (req, res, next) => { SchemaVal
 // customer routes
 userRouter.get('/all-customers', validateJwtTokenUsers, getCustomers)
 userRouter.post('/add-customer',validateJwtTokenUsers,(req, res, next) => {SchemaValidateMiddleware(req, res, next, customerSchema)},addCustomer)
-userRouter.post('/single-customer', validateJwtTokenUsers,(req, res, next) => {SchemaValidateMiddleware(req, res, next, singleCustjoin)}, singleCustomer)
+userRouter.post('/single-customer', validateJwtTokenUsers,(req, res, next) => {SchemaValidateMiddleware(req, res, next, singleCust)}, singleCustomer)
 userRouter.patch('/edit-customer', validateJwtTokenUsers,(req, res, next) => {SchemaValidateMiddleware(req, res, next, editCustomerDet)}, editCustomer)
 
 module.exports = { userRouter }
