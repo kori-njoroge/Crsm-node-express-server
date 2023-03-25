@@ -11,6 +11,7 @@ CREATE TABLE users
     full_name VARCHAR(200) NOT NULL,
     phone VARCHAR(30) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    gender VARCHAR(20) NOT NULL,
     [role] VARCHAR(50) NOT NULL,
     joined_at DATE NOT NULL,
     [password] NVARCHAR(255) NOT NULL
@@ -24,6 +25,7 @@ CREATE TABLE customers
     full_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     phone VARCHAR(30) UNIQUE NOT NULL,
+    gender VARCHAR(20) NOT NULL,
     joined_At DATE NOT NULL,
     loyalty_points INT DEFAULT 0
 )

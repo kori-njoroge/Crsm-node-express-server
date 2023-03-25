@@ -7,14 +7,15 @@ CREATE PROCEDURE add_user
   @full_name VARCHAR(255),
   @phone VARCHAR(30),
   @email VARCHAR(255),
+  @gender VARCHAR(20),
   @role VARCHAR(50),
   @password VARCHAR(255)
 AS
 BEGIN
   INSERT INTO users
-    (full_name,phone,email, [role],joined_at,[password])
+    (full_name,phone,email, gender ,[role],joined_at,[password])
   VALUES
-    (@full_name, @phone, @email, @role, GETDATE(), @password)
+    (@full_name, @phone, @email,@gender, @role, GETDATE(), @password)
 END
 GO
 
@@ -44,22 +45,23 @@ GO
 CREATE PROCEDURE add_customer
   @full_name VARCHAR(255),
   @email VARCHAR(255) ,
-  @phone VARCHAR(20) 
+  @phone VARCHAR(20) ,
+  @gender VARCHAR(20) 
 
 AS
 BEGIN
   DECLARE @cust_id  INT
   INSERT INTO users
-    (full_name,phone,email, [role],joined_at,[password])
+    (full_name,phone,email, gender,[role],joined_at,[password])
   VALUES
-    (@full_name, @phone, @email, 'customer', GETDATE(), 'pass'+ @phone)
+    (@full_name, @phone, @email, @gender,'customer', GETDATE(), 'pass'+ @phone)
   -- getting id
   SET @cust_id = SCOPE_IDENTITY()
   -- updating cutomer table
   INSERT INTO customers
-    (id,full_name, email, phone, joined_At)
+    (id,full_name, email, phone,gender, joined_At)
   VALUES
-    (@cust_id,@full_name, @email, @phone, GETDATE())
+    (@cust_id,@full_name, @email, @phone,@gender, GETDATE())
 END
 GO
 
