@@ -11,19 +11,31 @@ GET http://localhost:4000/notifications/
 
 # all users
 ###
-GET    http://localhost:5000/users/
-
+GET    http://localhost:4000/users/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
 
 # add users
 ###
 POST   http://localhost:4000/users/signup
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
+
+# {
+#     "fullName":"jamaa Mwasiwa",
+#     "phone":706306800,
+#     "email":"jamaak@gmail.com",
+#     "gender":"male",
+#     "role":"staff",
+#     "password":"mypass1"
+# }
 
 {
-    "fullName":"jacob Mwasiwa",
-    "phone":"254706306400",
-    "email":"marak@gmail.com",
-    "role":"staff",
+    "fullName":"Joanina  Mulwa",
+    "phone":712385647,
+    "email":"jmulwa@gmail.com",
+    "gender":"male",
+    "role":"admin",
     "password":"mypass1"
 }
 
@@ -31,48 +43,64 @@ Content-Type: application/json
 ###
 POST  http://localhost:4000/users/login
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
 
 {
-    "email":"marak@gmail.com",
-    "password":"myass1"
+    "email":"jmulwa@gmail.com",
+    "password":"mypass1"
 
 }
 
 # add customer
 ###
-POST  http://localhost:4000/users/add-customer
+POST http://localhost:4000/users/add-customer
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
 
 {
-    "fullName":"Mark Msee",
-    "phone":"254706307400",
-    "email":"marksmsee@gmail.com"
+    "fullName": "Mark Msee",
+    "phone": "254706007400",
+    "email": "mustafa@gmail.com",
+    "gender":"male"
 }
+
 
 
 # all customers
 ###
 GET   http://localhost:4000/users/all-customers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
 
 
 # single user
 ###
 POST    http://localhost:4000/users/single-customer
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
 
 {
-    "phone":"2478909009"
+    "phone":"254706307400"
 }
 
 
 # edit customer
 ###
-POST http://localhost:4000/users/edit-customer
+PATCH  http://localhost:4000/users/edit-customer
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
 
 {
-    "id":"106",
+    "id":"1158",
     "email":"jayagain@example.com",
     "phone":"2478909009"
 }
 
+# products sections
+###
+GET http://localhost:4000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2MDEwNywiZXhwIjoxNjc5NzYzNzA3fQ.t8yloS3Y7jB7uasPEqvK2x092gZq1HNdikOEc-i2CxA
+
+
+###
+GET http://localhost:4000/notifications
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2MDEwNywiZXhwIjoxNjc5NzYzNzA3fQ.t8yloS3Y7jB7uasPEqvK2x092gZq1HNdikOEc-i2CxA
