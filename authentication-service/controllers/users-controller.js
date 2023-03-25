@@ -1,7 +1,8 @@
 const sql = require('mssql');
 const bcrypt = require('bcrypt');
 
-const { config } = require('../sql-config')
+const { config } = require('../sql-config');
+const { createToken } = require('../services/jwt-token.js');
 
 const pool = new sql.ConnectionPool(config)
 
@@ -10,14 +11,14 @@ const pool = new sql.ConnectionPool(config)
 module.exports = {
     //users
     addUser: async (req, res) => {
-        const { fullName, phone, email, password, role } = req.body;
+        const { fullName, phone, email, password, role,gender } = req.body;
         let hash = await bcrypt.hash(password, 8)
-        console.log(hash)
         try {
             await pool.connect()
             const data = await pool.request()
                 .input('full_name', fullName)
                 .input('phone', phone)
+                .input('gender',gender)
                 .input('email', email)
                 .input('role', role)
                 .input('password', hash)
@@ -25,10 +26,10 @@ module.exports = {
 
             res.json(data.rowsAffected)
         } catch (error) {
-            if(error.message.includes('Violation of UNIQUE KEY constraint')){
-                res.json({message:"User already exists"})
+            if (error.message.includes('Violation of UNIQUE KEY constraint')) {
+                res.json({ message: "User already exists" })
 
-            }else{
+            } else {
                 res.json(error.message)
 
             }
@@ -53,8 +54,8 @@ module.exports = {
             if (data.recordset.length) {
                 let dbPass = data.recordset[0].password
                 let result = await bcrypt.compare(password, dbPass)
-                console.log(result)
-                result ? res.json({ response: "Login successful" }) : res.json({ response: "Check your credentials" })
+                let token = createToken({email})
+                result ? res.json({ response: "Login successful", token }) : res.json({ response: "Check your credentials" })
             } else {
                 res.json({ message: 'User not found!' })
             }
@@ -65,17 +66,18 @@ module.exports = {
 
     //customers
     addCustomer: async (req, res) => {
-        const { fullName, phone, email } = req.body
+        const { fullName, phone, email,gender } = req.body
         try {
             await pool.connect()
             let data = await pool.request()
                 .input('full_name', fullName)
                 .input('email', email)
                 .input('phone', phone)
+                .input('gender', gender)
                 .execute(`add_customer`)
             res.json(data.recordset)
         } catch (error) {
-            res.json(error)
+            res.status(400).json(error.precedingErrors.map((err,index) => `${index+1}-> ${err.message}`));
         }
     },
     getCustomers: async (req, res) => {
@@ -94,12 +96,14 @@ module.exports = {
             let data = await pool.request()
                 .input('phone', phone)
                 .execute(`get_single_customer`)
-            !data.recordset ? res.json("No records found") : res.json(data.recordset)
+                console.log(data)
+            !data.recordset.length ? res.json("No records found") : res.json(data.recordset)
         } catch (error) {
             res.json(error.message)
         }
     },
     editCustomer: async (req, res) => {
+        console.log('data')
         let { id, fullName, email, phone } = req.body
         try {
             await pool.connect()
@@ -109,7 +113,6 @@ module.exports = {
                 .input('new_email', email)
                 .input('new_phone', phone)
                 .execute(`update_customer`)
-
             data.rowsAffected > 0 ? res.json({ message: "Customer details updated successfully" }) : res.json({ message: "Request not completed try again later" })
 
         } catch (error) {
