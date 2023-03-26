@@ -8,7 +8,7 @@ const { validateJwtTokenUsers } = require('../middlewares/authenticate-middlewar
 // users
 userRouter.get('/', validateJwtTokenUsers, getAllUsers)
 userRouter.post('/login',(req, res, next) => { SchemaValidateMiddleware(req, res, next, loginSchema) }, login)
-userRouter.post('/signup',validateJwtTokenUsers,(req, res, next) => {SchemaValidateMiddleware(req, res, next, addUserSchema)}, addUser)
+userRouter.post('/signup',(req, res, next) => {SchemaValidateMiddleware(req, res, next, addUserSchema)}, addUser)
 userRouter.patch('/update-user',validateJwtTokenUsers,(req, res, next) => {SchemaValidateMiddleware(req, res, next, editCustomerDet)},updateUserDetails)
 // customer routes
 userRouter.get('/all-customers', validateJwtTokenUsers, getCustomers)

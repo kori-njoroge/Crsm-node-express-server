@@ -46,7 +46,7 @@ Content-Type: application/json
 
 
 {
-    "email":"jmulwa@gmail.com",
+    "email":"jmulwaa@gmail.com",
     "password":"mypass1"
 
 }
@@ -55,7 +55,7 @@ Content-Type: application/json
 ###
 PATCH  http://localhost:4000/users/update-user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YUBnbWFpbC5jb20iLCJpYXQiOjE2Nzk4MTk4NDQsImV4cCI6MTY3OTg0MTQ0NH0.ceqmFLExuK0wPxQXpLML2GI4vVTFTjEHlKJaj9rRGeo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
 
 {
     "id":"2",
