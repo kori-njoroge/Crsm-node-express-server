@@ -38,6 +38,8 @@ CREATE TABLE categories
     [name] VARCHAR(255) UNIQUE NOT NULL,
     [description] NVARCHAR(255) NOT NULL,
     added_by INT FOREIGN KEY REFERENCES users(id),
+    updated_by INT FOREIGN KEY REFERENCES users(id),
+    updated_on DATE,
     added_on DATE NOT NULL,
     isdeleted BIT DEFAULT 0,
     approved BIT DEFAULT 0

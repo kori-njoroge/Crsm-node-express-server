@@ -255,24 +255,27 @@ CREATE PROCEDURE add_category
 AS
 BEGIN
   INSERT INTO categories
-    ([name],[description],added_by,added_on)
-  VALUES(@category_name, @description,@added_by,GETDATE())
+    ([name],[description],added_by,updated_by,added_on)
+  VALUES(@category_name, @description, @added_by, @added_by, GETDATE())
 END
 GO
 
 
 -- Updating category
 CREATE PROCEDURE update_category
-  @category_id INT,
-  @name VARCHAR(255) = NULL,
+  @category_id CHAR(6),
+  @category_name VARCHAR(255) = NULL,
   @category_dec NVARCHAR(255) =NULL,
+  @updated_by INT = NULL,
   @approved BIT = NULL
 AS
 BEGIN
   UPDATE categories
-  SET [name] =ISNULL(@name,[name]),
-      [description]=ISNULL (@category_id,[description]),
-      approved = ISNULL(@approved,approved)
+  SET [name] =ISNULL(@category_name,[name]),
+      [description]=ISNULL (@category_dec,[description]),
+      updated_by = ISNULL(@updated_by,updated_by),
+      approved = ISNULL(@approved,approved),
+      updated_on = GETDATE()
   WHERE id = @category_id
 END
 GO
