@@ -11,7 +11,7 @@ date = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
 module.exports = {
     // category
     createCategory: async (req, res) => {
-        const { categoryName, description, addedBy } = req.body
+        const { categoryName, description, addedBy, updatedBy } = req.body
         try {
             await pool.connect()
             let data = await pool.request()
@@ -39,8 +39,6 @@ module.exports = {
     getSingleCategory: async (req, res) => {
         console.log(req.params)
         const { catId } = req.params
-        let id = `'${catId}'`
-        console.log(id)
         try {
             await pool.connect()
             let data = await pool.request()
@@ -51,6 +49,24 @@ module.exports = {
                 : res.status(200).json(data.recordset)
         } catch (error) {
             res.status(500).json({ message: 'Internal server error' })
+        }
+    },
+    updateCategoryDetails: async (req, res) => {
+        const { catId, categoryName, description, updatedBy } = req.body
+        try {
+            await pool.connect()
+            let data = await pool.request()
+                .input('category_id', sql.Char(6), catId)
+                .input('category_name', categoryName)
+                .input('category_dec', description)
+                .input('updated_by', updatedBy)
+                .execute(`update_category`)
+                console.log(data)
+                if(data.rowsAffected ) res.status(200).json({message:`Details for {${catId}} updated successfully on ${date}}`})
+                else res.status(501).json({message:"Failed try again later"})
+        } catch (error) {
+            console.log(error)
+            res.status(400).json(error.originalError['info'].message)
         }
     }
 }
