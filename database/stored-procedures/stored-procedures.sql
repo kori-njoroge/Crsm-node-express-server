@@ -292,7 +292,24 @@ BEGIN
   DELETE FROM categories WHERE [name] = @category_name
 END
 GO
-
+-- query all categories
+CREATE PROCEDURE get_categories
+AS
+BEGIN
+  SELECT *
+  FROM categories
+END
+GO
+-- get single category
+CREATE PROCEDURE get_category_by_id
+  @category_id CHAR(6)
+AS
+BEGIN
+  SELECT *
+  FROM categories
+  WHERE id = @category_id
+END
+GO
 
 -- PRODUCTS
 -- 1. Add product

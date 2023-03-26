@@ -18,6 +18,8 @@ DROP PROCEDURE IF EXISTS get_notitications
 DROP PROCEDURE IF EXISTS add_category
 DROP PROCEDURE IF EXISTS update_category
 DROP PROCEDURE IF EXISTS delete_category
+DROP PROCEDURE IF EXISTS get_categories
+DROP PROCEDURE IF EXISTS get_category_by_id
 DROP PROCEDURE IF EXISTS add_product
 DROP PROCEDURE IF EXISTS delete_product
 DROP PROCEDURE IF EXISTS update_product
