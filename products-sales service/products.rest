@@ -20,24 +20,29 @@ POST http://localhost:4000/products/category/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
 
-# {
-#     "categoryName":"Cookies",
-#     "description":"very healthy food"
-# }
+{
+    "categoryName":"Cookies",
+    "description":"very healthy food",
+    "addedBy":105
+}
 
 # {
 #     "categoryName":"Clothes",
-#     "description":"the best attires"
+#     "description":"the best attires",
+#     "addedBy":105
 # }
 
 # {
 #     "categoryName":"Snezkers",
-#     "description":"the best feet attires"
+#     "description":"the best feet attires",
+#     "addedBy":105
 # }
-{
-    "categoryName":"SNACKS",
-    "description":"the best mouth attires"
-}
+
+# {
+#     "categoryName":"SNACKS",
+#     "description":"the best mouth attires",
+#     "addedBy":105
+# }
 
 
 #get all categories
@@ -49,5 +54,27 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 
 # get single category
 ###
-GET http://localhost:4000/products/category/single/75E9EC
+GET http://localhost:4000/products/category/single/318E46
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+
+
+
+
+# update category
+###
+PATCH  http://localhost:4000/products/category/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+
+{
+    "catId":"318E6",
+    "categoryName":"Bites",
+    "description":"very healthy food biting",
+    "updatedBy":105
+}
+
+#Delete category
+###
+DELETE  http://localhost:4000/products/category/delete/318E46
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+
