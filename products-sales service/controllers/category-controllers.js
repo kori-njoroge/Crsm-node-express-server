@@ -61,12 +61,25 @@ module.exports = {
                 .input('category_dec', description)
                 .input('updated_by', updatedBy)
                 .execute(`update_category`)
+            console.log(data)
+            if (data.rowsAffected > 0) res.status(200).json({ message: `Details for {${catId}} updated successfully on ${date}}` })
+            else res.status(501).json({ message: "Failed to update,try again later" })
+        } catch (error) {
+            res.status(400).json(error.originalError['info'].message)
+        }
+    },
+    deleteCategory: async (req, res) => {
+        const { catId } = req.params
+        try {
+            await pool.connect()
+            let data = await pool.request()
+                .input('category_id', sql.Char(6), catId)
+                .execute(`delete_category`)
                 console.log(data)
-                if(data.rowsAffected ) res.status(200).json({message:`Details for {${catId}} updated successfully on ${date}}`})
-                else res.status(501).json({message:"Failed try again later"})
+                if (data.rowsAffected > 0) res.status(200).json({ message: `Category with id: {${catId}} successfully deleted `})
+                else res.status(501).json({ message: "Failed to delete,try again later" })
         } catch (error) {
             console.log(error)
-            res.status(400).json(error.originalError['info'].message)
         }
     }
 }
