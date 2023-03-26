@@ -34,8 +34,9 @@ Go
 -- CATEGORIES TABLE
 CREATE TABLE categories
 (
-    id INT PRIMARY KEY IDENTITY(1,1),
+    id CHAR(6) PRIMARY KEY DEFAULT SUBSTRING(CONVERT(VARCHAR(40), NEWID()), 1, 6),
     [name] VARCHAR(255) UNIQUE NOT NULL,
+    [description] NVARCHAR(255) NOT NULL,
     approved BIT DEFAULT 0
 )
 GO
@@ -48,7 +49,7 @@ CREATE TABLE products
     price FLOAT NOT NULL,
     items_added INT NOT NULL,
     added_on DATE NOT NULL,
-    category_id INT FOREIGN KEY REFERENCES categories(id),
+    category_id CHAR(6) FOREIGN KEY REFERENCES categories(id),
     approved BIT DEFAULT 0
 )
 GO

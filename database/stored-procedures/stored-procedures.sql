@@ -248,17 +248,25 @@ GO
 
 -- CATEGORIES
 CREATE PROCEDURE add_category
-  @name VARCHAR(255)
+  @category_name VARCHAR(255),
+  @description NVARCHAR(255)
+
 AS
 BEGIN
   -- Check if category already exists
-  IF EXISTS (SELECT *
-  FROM categories
-  WHERE name = @name)
-  BEGIN
-    PRINT 'Category already exists'
-    RETURN
-  END
+  -- IF EXISTS (SELECT *
+  -- FROM categories
+  -- WHERE name = @category_name)
+  -- BEGIN
+  --   PRINT 'Category already exists'
+  --   RETURN
+  -- END
+  -- ELSE 
+  -- BEGIN
+  INSERT INTO categories
+    ([name],[description])
+  VALUES(@category_name, @description)
+-- END
 END
 GO
 
