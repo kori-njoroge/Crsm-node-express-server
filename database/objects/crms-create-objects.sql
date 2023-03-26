@@ -49,12 +49,17 @@ GO
 -- PRODUCTS TABLE
 CREATE TABLE products
 (
-    id INT PRIMARY KEY IDENTITY(1,1),
+    id CHAR(6) PRIMARY KEY DEFAULT SUBSTRING(CONVERT(VARCHAR(40), NEWID()), 1, 6),
     [name] VARCHAR(255) UNIQUE NOT NULL,
+    [description] NVARCHAR(255) NOT NULL,
+    added_by INT FOREIGN KEY REFERENCES users(id),
+    category_id CHAR(6) FOREIGN KEY REFERENCES categories(id),
     price FLOAT NOT NULL,
     items_added INT NOT NULL,
+    updated_by INT FOREIGN KEY REFERENCES users(id),
     added_on DATE NOT NULL,
-    category_id CHAR(6) FOREIGN KEY REFERENCES categories(id),
+    updated_on DATE,
+    isdeleted BIT DEFAULT 0,
     approved BIT DEFAULT 0
 )
 GO
@@ -74,7 +79,7 @@ CREATE TABLE line_items
 (
     id INT PRIMARY KEY IDENTITY(1,1),
     sale_id INT FOREIGN KEY REFERENCES sales(id),
-    product_id INT FOREIGN KEY REFERENCES products(id),
+    product_id CHAR(6) FOREIGN KEY REFERENCES products(id),
     quantity INT NOT NULL,
     price FLOAT NOT NULL
 )
