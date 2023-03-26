@@ -13,7 +13,7 @@ GET http://localhost:4000/notifications/
 ###
 GET    http://localhost:4000/users/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YUBnbWFpbC5jb20iLCJpYXQiOjE2Nzk4MTk4NDQsImV4cCI6MTY3OTg0MTQ0NH0.ceqmFLExuK0wPxQXpLML2GI4vVTFTjEHlKJaj9rRGeo
 
 # add users
 ###
@@ -32,10 +32,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 
 {
     "fullName":"Joanina  Mulwa",
-    "phone":712385647,
-    "email":"jmulwa@gmail.com",
-    "gender":"male",
-    "role":"admin",
+    "phone":712385687,
+    "email":"jmulwaa@gmail.com",
+    "gender":"female",
+    "role":"super admin",
     "password":"mypass1"
 }
 
@@ -43,7 +43,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 ###
 POST  http://localhost:4000/users/login
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
+
 
 {
     "email":"jmulwa@gmail.com",
@@ -51,16 +51,43 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 
 }
 
+#edit user details
+###
+PATCH  http://localhost:4000/users/update-user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YUBnbWFpbC5jb20iLCJpYXQiOjE2Nzk4MTk4NDQsImV4cCI6MTY3OTg0MTQ0NH0.ceqmFLExuK0wPxQXpLML2GI4vVTFTjEHlKJaj9rRGeo
+
+{
+    "id":"2",
+    "fullName":"Joanina Muthoni",
+    "email":"muthoni@example.com",
+    "phone":"25471285200"
+}
+
 # add customer
 ###
 POST http://localhost:4000/users/add-customer
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YUBnbWFpbC5jb20iLCJpYXQiOjE2Nzk4MTk4NDQsImV4cCI6MTY3OTg0MTQ0NH0.ceqmFLExuK0wPxQXpLML2GI4vVTFTjEHlKJaj9rRGeo
+
+# {
+#     "fullName": "Mark Msee",
+#     "phone": "254706007400",
+#     "email": "mustafa@gmail.com",
+#     "gender":"male"
+# }
+
+# {
+#     "fullName": "Corey corey",
+#     "phone": "2547060078678",
+#     "email": "corey@gmail.com",
+#     "gender":"male"
+# }
 
 {
-    "fullName": "Mark Msee",
-    "phone": "254706007400",
-    "email": "mustafa@gmail.com",
+    "fullName": "Corey mahn",
+    "phone": "254000600978",
+    "email": "kcore@gmail.com",
     "gender":"male"
 }
 
@@ -76,10 +103,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 ###
 POST    http://localhost:4000/users/single-customer
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YUBnbWFpbC5jb20iLCJpYXQiOjE2Nzk4MTk4NDQsImV4cCI6MTY3OTg0MTQ0NH0.ceqmFLExuK0wPxQXpLML2GI4vVTFTjEHlKJaj9rRGeo
 
 {
-    "phone":"254706307400"
+    "phone":"2478909009"
 }
 
 
@@ -87,7 +114,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 ###
 PATCH  http://localhost:4000/users/edit-customer
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YUBnbWFpbC5jb20iLCJpYXQiOjE2Nzk4MTk4NDQsImV4cCI6MTY3OTg0MTQ0NH0.ceqmFLExuK0wPxQXpLML2GI4vVTFTjEHlKJaj9rRGeo
 
 {
     "id":"1158",

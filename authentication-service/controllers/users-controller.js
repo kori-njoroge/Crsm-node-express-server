@@ -11,14 +11,14 @@ const pool = new sql.ConnectionPool(config)
 module.exports = {
     //users
     addUser: async (req, res) => {
-        const { fullName, phone, email, password, role,gender } = req.body;
+        const { fullName, phone, email, password, role, gender } = req.body;
         let hash = await bcrypt.hash(password, 8)
         try {
             await pool.connect()
             const data = await pool.request()
                 .input('full_name', fullName)
                 .input('phone', phone)
-                .input('gender',gender)
+                .input('gender', gender)
                 .input('email', email)
                 .input('role', role)
                 .input('password', hash)
@@ -30,8 +30,7 @@ module.exports = {
                 res.json({ message: "User already exists" })
 
             } else {
-                res.json(error.message)
-
+                res.status(400).json(error.originalError['info'].message)
             }
         }
     },
@@ -42,6 +41,7 @@ module.exports = {
             res.json(data.recordset)
         } catch (error) {
             console.log(error)
+            res.status(500).json({ message: "Its not you is us" })
         }
     },
     login: async (req, res) => {
@@ -54,19 +54,34 @@ module.exports = {
             if (data.recordset.length) {
                 let dbPass = data.recordset[0].password
                 let result = await bcrypt.compare(password, dbPass)
-                let token = createToken({email})
+                let token = createToken({ email })
                 result ? res.json({ response: "Login successful", token }) : res.json({ response: "Check your credentials" })
             } else {
-                res.json({ message: 'User not found!' })
+                res.status(400).json({ message: 'User not found!' })
             }
         } catch (error) {
-            res.json(error.message)
+            res.status(500).json(error.message)
+        }
+    },
+    updateUserDetails: async (req, res) => {
+        const { id, fullName, email, phone } = req.body
+        try {
+            await pool.connect()
+            let data = await pool.request()
+                .input('user_id', id)
+                .input('new_full_name', fullName)
+                .input('new_email', email)
+                .input('new_phone', phone)
+                .execute(`update_user_det`)
+            data.rowsAffected.length > 0 ? res.status(200).json({ message: "User details updated successfully" }) : res.status(500).json({ message: "Request not completed try again later" })
+        } catch (error) {
+            res.status(400).json(error.originalError['info'].message)
         }
     },
 
     //customers
     addCustomer: async (req, res) => {
-        const { fullName, phone, email,gender } = req.body
+        const { fullName, phone, email, gender } = req.body
         try {
             await pool.connect()
             let data = await pool.request()
@@ -75,18 +90,18 @@ module.exports = {
                 .input('phone', phone)
                 .input('gender', gender)
                 .execute(`add_customer`)
-            res.json(data.recordset)
+            data.rowsAffected.length > 0 ? res.status(200).json({ message: "Customer added  successfully" }) : res.status(500).json({ message: "Request not completed try again later" })
         } catch (error) {
-            res.status(400).json(error.precedingErrors.map((err,index) => `${index+1}-> ${err.message}`));
+            res.status(400).json(error.precedingErrors.map((err, index) => `${index + 1}-> ${err.message}`));
         }
     },
     getCustomers: async (req, res) => {
         try {
             await pool.connect()
             let data = await pool.request().execute(`get_customers`)
-            res.json(data.recordset)
+            res.status(200).json(data.recordset)
         } catch (error) {
-            res.send(error.message)
+            res.status(500).send(error.message)
         }
     },
     singleCustomer: async (req, res) => {
@@ -96,27 +111,26 @@ module.exports = {
             let data = await pool.request()
                 .input('phone', phone)
                 .execute(`get_single_customer`)
-                console.log(data)
-            !data.recordset.length ? res.json("No records found") : res.json(data.recordset)
+            console.log(data)
+            !data.recordset.length ? res.status(200).json("No records found") : res.status(200).json(data.recordset)
         } catch (error) {
-            res.json(error.message)
+            res.status(500).json(error.message)
         }
     },
     editCustomer: async (req, res) => {
-        console.log('data')
         let { id, fullName, email, phone } = req.body
         try {
             await pool.connect()
             let data = await pool.request()
                 .input('customer_id', id)
-                .input('new_full_name', fullName)
-                .input('new_email', email)
-                .input('new_phone', phone)
+                .input('full_name', fullName)
+                .input('email', email)
+                .input('phone', phone)
                 .execute(`update_customer`)
-            data.rowsAffected > 0 ? res.json({ message: "Customer details updated successfully" }) : res.json({ message: "Request not completed try again later" })
-
+            console.log(data)
+            data.rowsAffected.length > 0 ? res.status(200).json({ message: "Customer details updated successfully" }) : res.status(400).json({ message: "Request not completed try again later" })
         } catch (error) {
-            res.json(error)
+            res.status(400).json(error.originalError['info'].message)
         }
     }
 }
