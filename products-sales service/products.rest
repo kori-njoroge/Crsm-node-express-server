@@ -34,6 +34,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 #     "description":"the best feet attires"
 # }
 {
-    "categoryName":"snacks",
+    "categoryName":"SNACKS",
     "description":"the best mouth attires"
 }
+
+
+#get all categories
+###
+GET http://localhost:4000/products/category/all-categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTgzMzM4MSwiZXhwIjoxNjc5ODU0OTgxfQ.8bWhRuhIYO428ioLyuqtIWiL7QLxy38h45PH01DOc8I
