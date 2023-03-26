@@ -15,7 +15,7 @@ BEGIN
   INSERT INTO users
     (full_name,phone,email, gender ,[role],joined_at,[password])
   VALUES
-    (@full_name, @phone, @email,@gender, @role, GETDATE(), @password)
+    (@full_name, @phone, @email, @gender, @role, GETDATE(), @password)
 END
 GO
 
@@ -41,12 +41,38 @@ BEGIN
 END
 GO
 
+
+-- update user details
+CREATE PROCEDURE update_user_det
+  @user_id INT,
+  @new_full_name VARCHAR(255) = NULL,
+  @new_email VARCHAR(255) = NULL,
+  @new_phone VARCHAR(30) = NULL
+AS
+BEGIN
+  UPDATE users
+    SET 
+        full_name = ISNULL(@new_full_name, full_name),
+        email = ISNULL(@new_email, email),
+        phone = ISNULL(@new_phone, phone)
+    WHERE id = @user_id;
+
+  -- update customers table if there exits
+  UPDATE customers
+  SET full_name = ISNULL( @new_full_name,full_name),
+      email = ISNULL( @new_email,email),
+      phone = ISNULL( @new_phone,phone)
+  WHERE id = @user_id
+END;
+GO
+
+
 --4. Adding Customer {called with add user procedure}
 CREATE PROCEDURE add_customer
   @full_name VARCHAR(255),
   @email VARCHAR(255) ,
   @phone VARCHAR(20) ,
-  @gender VARCHAR(20) 
+  @gender VARCHAR(20)
 
 AS
 BEGIN
@@ -54,14 +80,14 @@ BEGIN
   INSERT INTO users
     (full_name,phone,email, gender,[role],joined_at,[password])
   VALUES
-    (@full_name, @phone, @email, @gender,'customer', GETDATE(), 'pass'+ @phone)
+    (@full_name, @phone, @email, @gender, 'customer', GETDATE(), 'pass'+ @phone)
   -- getting id
   SET @cust_id = SCOPE_IDENTITY()
   -- updating cutomer table
   INSERT INTO customers
     (id,full_name, email, phone,gender, joined_At)
   VALUES
-    (@cust_id,@full_name, @email, @phone,@gender, GETDATE())
+    (@cust_id, @full_name, @email, @phone, @gender, GETDATE())
 END
 GO
 
@@ -87,20 +113,30 @@ GO
 
 -- 7. edit customer details
 CREATE PROCEDURE update_customer
-    @customer_id INT,
-    @new_full_name VARCHAR(255) = NULL,
-    @new_email VARCHAR(255) = NULL,
-    @new_phone VARCHAR(30) = NULL
+  @customer_id INT,
+  @full_name VARCHAR(255) = NULL,
+  @email VARCHAR(255) =NULL,
+  @phone VARCHAR(20) = NULL
 AS
 BEGIN
-    UPDATE customers
-    SET 
-        full_name = ISNULL(@new_full_name, full_name),
-        email = ISNULL(@new_email, email),
-        phone = ISNULL(@new_phone, phone)
-    WHERE id = @customer_id;
-END;
+  -- update the users table
+  UPDATE users
+  SET full_name = ISNULL( @full_name,full_name),
+      email = ISNULL( @email,email),
+      phone = ISNULL( @phone,phone)
+  WHERE id = @customer_id
+
+
+
+  -- update the customers table
+  UPDATE customers
+  SET full_name = ISNULL( @full_name,full_name),
+      email = ISNULL( @email,email),
+      phone = ISNULL( @phone,phone)
+  WHERE id = @customer_id
+END
 GO
+
 
 -- SALES STORED PROCEDURES.
 -- 1. Make a sale
