@@ -249,24 +249,14 @@ GO
 -- CATEGORIES
 CREATE PROCEDURE add_category
   @category_name VARCHAR(255),
-  @description NVARCHAR(255)
+  @description NVARCHAR(255),
+  @added_by INT
 
 AS
 BEGIN
-  -- Check if category already exists
-  -- IF EXISTS (SELECT *
-  -- FROM categories
-  -- WHERE name = @category_name)
-  -- BEGIN
-  --   PRINT 'Category already exists'
-  --   RETURN
-  -- END
-  -- ELSE 
-  -- BEGIN
   INSERT INTO categories
-    ([name],[description])
-  VALUES(@category_name, @description)
--- END
+    ([name],[description],added_by,added_on)
+  VALUES(@category_name, @description,@added_by,GETDATE())
 END
 GO
 
@@ -274,13 +264,15 @@ GO
 -- Updating category
 CREATE PROCEDURE update_category
   @category_id INT,
-  @name VARCHAR(255),
-  @approved BIT
+  @name VARCHAR(255) = NULL,
+  @category_dec NVARCHAR(255) =NULL,
+  @approved BIT = NULL
 AS
 BEGIN
   UPDATE categories
-  SET name = @name,
-      approved = @approved
+  SET [name] =ISNULL(@name,[name]),
+      [description]=ISNULL (@category_id,[description]),
+      approved = ISNULL(@approved,approved)
   WHERE id = @category_id
 END
 GO
@@ -310,6 +302,7 @@ BEGIN
   WHERE id = @category_id
 END
 GO
+
 
 -- PRODUCTS
 -- 1. Add product

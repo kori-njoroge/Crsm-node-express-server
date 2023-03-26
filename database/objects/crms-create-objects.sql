@@ -37,6 +37,9 @@ CREATE TABLE categories
     id CHAR(6) PRIMARY KEY DEFAULT SUBSTRING(CONVERT(VARCHAR(40), NEWID()), 1, 6),
     [name] VARCHAR(255) UNIQUE NOT NULL,
     [description] NVARCHAR(255) NOT NULL,
+    added_by INT FOREIGN KEY REFERENCES users(id),
+    added_on DATE NOT NULL,
+    isdeleted BIT DEFAULT 0,
     approved BIT DEFAULT 0
 )
 GO
