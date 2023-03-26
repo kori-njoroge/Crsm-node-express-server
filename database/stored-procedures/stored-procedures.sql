@@ -281,10 +281,13 @@ END
 GO
 -- Deleting Category
 CREATE PROCEDURE delete_category
-  @category_name VARCHAR(255)
+  @category_id VARCHAR(255)
 AS
 BEGIN
-  DELETE FROM categories WHERE [name] = @category_name
+  UPDATE categories 
+SET
+  isdeleted = 1
+  WHERE id = @category_id
 END
 GO
 -- query all categories
