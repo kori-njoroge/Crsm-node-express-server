@@ -3,8 +3,9 @@
 POST  http://localhost:4000/users/login
 Content-Type: application/json
 
+
 {
-    "email":"marak@gmail.com",
+    "email":"jmulwa@gmail.com",
     "password":"mypass1"
 
 }
@@ -17,7 +18,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 ###
 POST http://localhost:4000/products/category/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTgzMzM4MSwiZXhwIjoxNjc5ODU0OTgxfQ.8bWhRuhIYO428ioLyuqtIWiL7QLxy38h45PH01DOc8I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
 
 # {
 #     "categoryName":"Cookies",
@@ -42,4 +43,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 #get all categories
 ###
 GET http://localhost:4000/products/category/all-categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTgzMzM4MSwiZXhwIjoxNjc5ODU0OTgxfQ.8bWhRuhIYO428ioLyuqtIWiL7QLxy38h45PH01DOc8I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+
+
+
+# get single category
+###
+GET http://localhost:4000/products/category/single/75E9EC
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w

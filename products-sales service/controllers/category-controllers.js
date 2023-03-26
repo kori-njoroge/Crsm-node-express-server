@@ -15,7 +15,7 @@ module.exports = {
         try {
             await pool.connect()
             let data = await pool.request()
-            .input('category_name', categoryName.toLowerCase())
+                .input('category_name', categoryName.toLowerCase())
                 .input('description', description.toLowerCase())
                 .execute(`add_category`)
             data.rowsAffected.length && res.status(200).json({ message: `Successfully added new category: (${categoryName})  on ${date}` })
@@ -32,7 +32,24 @@ module.exports = {
             let data = await pool.request().execute(`get_categories`)
             res.status(200).json(data.recordset)
         } catch (error) {
-            res.status(500).json({message:"Its not you its us"})
+            res.status(500).json({ message: "Its not you its us" })
+        }
+    },
+    getSingleCategory: async (req, res) => {
+        console.log(req.params)
+        const { catId } = req.params
+        let id =`'${catId}'`
+        console.log(id)
+        try {
+            await pool.connect()
+            let data = await pool.request()
+                .input('category_id',sql.Char(6),catId)
+                .execute(`get_category_by_id`)
+                console.log(data)
+            !data.recordset.length ? res.status(400).json({ message: "No records found" })
+                : res.status(200).json(data.recordset)
+        } catch (error) {
+            res.status(500).json({ message: 'Internal server error' })
         }
     }
 }
