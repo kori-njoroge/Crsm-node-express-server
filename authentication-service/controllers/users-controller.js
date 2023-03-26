@@ -23,8 +23,7 @@ module.exports = {
                 .input('role', role)
                 .input('password', hash)
                 .execute(`add_user`)
-
-            res.json(data.rowsAffected)
+            data.rowsAffected > 1 && res.status(200).json({message:"User created succesfully"})
         } catch (error) {
             if (error.message.includes('Violation of UNIQUE KEY constraint')) {
                 res.json({ message: "User already exists" })
