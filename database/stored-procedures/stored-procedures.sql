@@ -367,6 +367,7 @@ AS
 BEGIN
   SELECT *
   FROM products
+  WHERE isdeleted = 0
 END
 GO
 --5. Query single product
