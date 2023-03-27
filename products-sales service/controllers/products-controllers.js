@@ -10,7 +10,7 @@ date = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
 module.exports = {
     // add products
     addProduct: async (req, res) => {
-        const { productName, description, addedBy, price, itemsAdded, categoryId } = req.body
+        const { productName, description, addedBy, price, quantity, categoryId } = req.body
         try {
             await pool.connect()
             let data = await pool.request()
@@ -18,7 +18,7 @@ module.exports = {
                 .input('description', description)
                 .input('added_by', addedBy)
                 .input('price', price)
-                .input('quantity', itemsAdded)
+                .input('quantity', quantity)
                 .input('category_id', categoryId)
                 .execute(`add_product`)
             data.rowsAffected.length && res.status(200).json({ message: `Successfully added new product: (${productName})  on ${date}` })

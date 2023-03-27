@@ -110,7 +110,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
     "description":"spin and dry",
     "addedBy":107,
     "price":5,
-    "itemsAdded":120,
+    "quantity":120,
     "categoryId":"9887EB"
 }
 

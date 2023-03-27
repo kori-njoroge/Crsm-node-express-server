@@ -15,6 +15,18 @@ const updateCategorySchema = Joi.object({
 })
 
 // PRODUCTS VALIDATION SCHEMAS
+const createProductSchema = Joi.object({
+    productName:Joi.string().required(),
+    description:Joi.string().required(),
+    addedBy:Joi.number().required(),
+    price:Joi.number().required(),
+    quantity:Joi.number().required(),
+    categoryId:Joi.string().alphanum().required()
+})
 
 // EXPORTS
-module.exports = { createCategorySchema,updateCategorySchema}
+module.exports = { 
+    // category
+    createCategorySchema,updateCategorySchema,
+    // products
+    createProductSchema}
