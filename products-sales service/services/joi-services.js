@@ -7,26 +7,40 @@ const createCategorySchema = Joi.object({
     description: Joi.string().required(),
     addedBy: Joi.number().required()
 })
+
 const updateCategorySchema = Joi.object({
     catId: Joi.string().alphanum().required(),
     updatedBy: Joi.number().required(),
     categoryName: Joi.string().optional(),
     description: Joi.string().optional()
-})
+}).or('categoyName', 'description')
 
 // PRODUCTS VALIDATION SCHEMAS
 const createProductSchema = Joi.object({
-    productName:Joi.string().required(),
-    description:Joi.string().required(),
-    addedBy:Joi.number().required(),
-    price:Joi.number().required(),
-    quantity:Joi.number().required(),
-    categoryId:Joi.string().alphanum().required()
+    productName: Joi.string().required(),
+    description: Joi.string().required(),
+    addedBy: Joi.number().required(),
+    price: Joi.number().required(),
+    quantity: Joi.number().required(),
+    categoryId: Joi.string().alphanum().required()
 })
 
+const updateProductSchema = Joi.object({
+    id: Joi.string().alphanum().required(),
+    updatedBy: Joi.number().required(),
+    productName: Joi.string().optional(),
+    description: Joi.string().optional(),
+    price: Joi.number().optional(),
+    quantity: Joi.number().optional(),
+    approved: Joi.number().optional()
+}).or('productName', 'description', 'price', 'qauntity', 'approved')
+
 // EXPORTS
-module.exports = { 
+module.exports = {
     // category
-    createCategorySchema,updateCategorySchema,
+    createCategorySchema,
+    updateCategorySchema,
     // products
-    createProductSchema}
+    createProductSchema,
+    updateCategorySchema
+}
