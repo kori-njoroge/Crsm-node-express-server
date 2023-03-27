@@ -72,5 +72,18 @@ module.exports = {
         } catch (error) {
             res.status(400).json(error.originalError['info'].message)
         }
+    },
+    deleteProduct: async (req, res) => {
+        const { productId } = req.params
+        try {
+            await pool.connect()
+            let data = await pool.request()
+                .input('id', sql.Char(6), productId)
+                .execute(`delete_product`)
+            data.rowsAffected > 0 ? res.status(200).json({ message: `Product with id:{${productId}} deleted successfully` })
+                : res.status(501).json({ message: `Not completed, try again later` })
+        } catch (error) {
+            res.status(400).json(error.originalError['info'].message)
+        }
     }
 }
