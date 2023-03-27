@@ -13,7 +13,7 @@ GET http://localhost:4000/notifications/
 ###
 GET    http://localhost:4000/users/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YUBnbWFpbC5jb20iLCJpYXQiOjE2Nzk4MTk4NDQsImV4cCI6MTY3OTg0MTQ0NH0.ceqmFLExuK0wPxQXpLML2GI4vVTFTjEHlKJaj9rRGeo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
 # add users
 ###
@@ -21,23 +21,23 @@ POST   http://localhost:4000/users/signup
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
 
-# {
-#     "fullName":"jamaa Mwasiwa",
-#     "phone":706306800,
-#     "email":"jamaak@gmail.com",
-#     "gender":"male",
-#     "role":"staff",
-#     "password":"mypass1"
-# }
-
 {
-    "fullName":"Joanina  Mulwa",
-    "phone":712385687,
-    "email":"jmulwaa@gmail.com",
-    "gender":"female",
-    "role":"super admin",
+    "fullName":"jamaa Mwasiwa",
+    "phone":706306800,
+    "email":"jamaak@gmail.com",
+    "gender":"male",
+    "role":"staff",
     "password":"mypass1"
 }
+
+# {
+#     "fullName":"Joanina  Mulwa",
+#     "phone":712385687,
+#     "email":"jmulwaa@gmail.com",
+#     "gender":"female",
+#     "role":"super admin",
+#     "password":"mypass1"
+# }
 
 # login to the system
 ###
