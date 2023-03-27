@@ -21,7 +21,6 @@ module.exports = {
                 .input('quantity', itemsAdded)
                 .input('category_id', categoryId)
                 .execute(`add_product`)
-            console.log(data)
             data.rowsAffected.length && res.status(200).json({ message: `Successfully added new product: (${productName})  on ${date}` })
         } catch (error) {
             error.originalError['info'].message.includes('Violation of UNIQUE KEY constraint') ?
