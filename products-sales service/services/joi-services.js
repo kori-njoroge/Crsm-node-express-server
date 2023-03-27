@@ -33,7 +33,7 @@ const updateProductSchema = Joi.object({
     price: Joi.number().optional(),
     quantity: Joi.number().optional(),
     approved: Joi.number().optional()
-}).or('productName', 'description', 'price', 'qauntity', 'approved')
+}).or('productName', 'description', 'price', 'quantity', 'approved')
 
 // EXPORTS
 module.exports = {
@@ -42,5 +42,5 @@ module.exports = {
     updateCategorySchema,
     // products
     createProductSchema,
-    updateCategorySchema
+    updateProductSchema
 }
