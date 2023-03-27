@@ -67,18 +67,21 @@ GO
 -- SALES TABLE
 CREATE TABLE sales
 (
-    id INT PRIMARY KEY IDENTITY(1,1),
+    id CHAR(6) PRIMARY KEY DEFAULT SUBSTRING(CONVERT(VARCHAR(40), NEWID()), 1, 6),
     customer_id INT FOREIGN KEY REFERENCES customers(id),
     made_by INT FOREIGN KEY REFERENCES users(id),
     sale_date DATE NOT NULL,
+    updated_on DATE,
+    total FLOAT NOT NULL,
     sale_state VARCHAR(50) CHECK (sale_state IN ('completed', 'refunded'))
+
 )
 GO
 -- LINE ITEMS TABLE
 CREATE TABLE line_items
 (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    sale_id INT FOREIGN KEY REFERENCES sales(id),
+    id CHAR(6) PRIMARY KEY DEFAULT SUBSTRING(CONVERT(VARCHAR(40), NEWID()), 1, 6),
+    sale_id CHAR(6) FOREIGN KEY REFERENCES sales(id),
     product_id CHAR(6) FOREIGN KEY REFERENCES products(id),
     quantity INT NOT NULL,
     price FLOAT NOT NULL
