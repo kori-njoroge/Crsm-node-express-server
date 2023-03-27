@@ -314,41 +314,50 @@ GO
 -- 1. Add product
 CREATE PROCEDURE add_product
   @name VARCHAR(255),
+  @description NVARCHAR(255),
+  @added_by INT,
   @price FLOAT,
-  @items_added INT,
-  @added_on DATE,
-  @category_id INT
+  @quantity INT,
+  @category_id CHAR(6)
 AS
 BEGIN
   INSERT INTO products
-    ([name], price, items_added, added_on, category_id)
+    ([name],[description],added_by, price, quantity, added_on, category_id,updated_by)
   VALUES
-    (@name, @price, @items_added, @added_on, @category_id)
+    (@name, @description, @added_by, @price, @quantity, GETDATE(), @category_id, @added_by)
 END
 GO
 
 
 -- 2. Update product
 CREATE PROCEDURE update_product
-  @id INT,
-  @name VARCHAR(255),
-  @price FLOAT,
-  @items_added INT,
-  @added_on DATE,
-  @category_id INT
+  @id CHAR(6),
+  @name VARCHAR(255) = NULL,
+  @description NVARCHAR(255) =NULL,
+  @updated_by INT = NULL,
+  @quantity INT = NULL,
+  @price INT =NULL,
+  @approved BIT = NULL
 AS
 BEGIN
   UPDATE products
-    SET [name] = @name, price = @price, items_added = @items_added, added_on = @added_on, category_id = @category_id
-    WHERE id = @id
+  SET [name] =ISNULL(@name,[name]),
+      [description]=ISNULL (@description,[description]),
+      updated_by = ISNULL(@updated_by,updated_by),
+      approved = ISNULL(@approved,approved),
+      price = ISNULL(@price,price),
+      quantity = ISNULL(@quantity,quantity),
+      updated_on = GETDATE()
+  WHERE id = @id
 END
 GO
 -- 3. Delete product
 CREATE PROCEDURE delete_product
-  @id INT
+  @id CHAR(6)
 AS
 BEGIN
-  DELETE FROM products
+  UPDATE products
+  SET isdeleted = 1
     WHERE id = @id
 END
 GO

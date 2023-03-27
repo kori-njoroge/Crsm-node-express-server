@@ -39,8 +39,8 @@ CREATE TABLE categories
     [description] NVARCHAR(255) NOT NULL,
     added_by INT FOREIGN KEY REFERENCES users(id),
     updated_by INT FOREIGN KEY REFERENCES users(id),
-    updated_on DATE,
     added_on DATE NOT NULL,
+    updated_on DATE,
     isdeleted BIT DEFAULT 0,
     approved BIT DEFAULT 0
 )
@@ -55,7 +55,7 @@ CREATE TABLE products
     added_by INT FOREIGN KEY REFERENCES users(id),
     category_id CHAR(6) FOREIGN KEY REFERENCES categories(id),
     price FLOAT NOT NULL,
-    items_added INT NOT NULL,
+    quantity INT NOT NULL,
     updated_by INT FOREIGN KEY REFERENCES users(id),
     added_on DATE NOT NULL,
     updated_on DATE,
