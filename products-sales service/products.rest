@@ -16,7 +16,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 
 
 ###
-POST http://localhost:4000/products/category/
+POST http://localhost:4000/products/category/add
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
@@ -32,17 +32,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 #     "addedBy":105
 # }
 
-# {
-#     "categoryName":"Snezkers",
-#     "description":"the best feet attires",
-#     "addedBy":105
-# }
-
 {
-    "categoryName":"SNACKS",
-    "description":"the best mouth attires",
+    "categoryName":"Snezkers",
+    "description":"the best feet attires",
     "addedBy":105
 }
+
+# {
+#     "categoryName":"SNACKS",
+#     "description":"the best mouth attires",
+#     "addedBy":105
+# }
 
 
 #get all categories
@@ -67,7 +67,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
 {
-    "catId":"318E6",
+    "catId":"9887EB",
     "categoryName":"Bites",
     "description":"very healthy food biting",
     "updatedBy":105
