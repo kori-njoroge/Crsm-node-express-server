@@ -12,19 +12,19 @@ Content-Type: application/json
 
 ###
 GET   http://localhost:4000/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
 
 
 ###
 POST http://localhost:4000/products/category/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
 
-# {
-#     "categoryName":"Cookies",
-#     "description":"very healthy food",
-#     "addedBy":105
-# }
+{
+    "categoryName":"Cookies",
+    "description":"very healthy food",
+    "addedBy":105
+}
 
 # {
 #     "categoryName":"Clothes",
@@ -32,11 +32,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 #     "addedBy":105
 # }
 
-{
-    "categoryName":"Snezkers",
-    "description":"the best feet attires",
-    "addedBy":105
-}
+# {
+#     "categoryName":"Snezkers",
+#     "description":"the best feet attires",
+#     "addedBy":105
+# }
 
 # {
 #     "categoryName":"SNACKS",
@@ -48,14 +48,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 #get all categories
 ###
 GET http://localhost:4000/products/category/all-categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
 
 
 
 # get single category
 ###
-GET http://localhost:4000/products/category/single/318E46
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+GET http://localhost:4000/products/category/single/A477A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
 
 
 
@@ -67,8 +67,8 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
 {
-    "catId":"9887EB",
-    "categoryName":"Bites",
+    "catId":"5F82D8",
+    "categoryName":"Electronics",
     "description":"very healthy food biting",
     "updatedBy":105
 }

@@ -1,9 +1,3 @@
-GET  http://localhost:5000/users/home
-
-###
-GET    http://localhost:4000/mien/
-
-
 # background services
 ###
 GET http://localhost:4000/notifications/
@@ -13,7 +7,7 @@ GET http://localhost:4000/notifications/
 ###
 GET    http://localhost:4000/users/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
 
 # add users
 ###
@@ -22,9 +16,9 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
 
 {
-    "fullName":"jamaa Mwasiwa",
-    "phone":706306800,
-    "email":"jamaak@gmail.com",
+    "fullName":"mike Alloo",
+    "phone":789856740,
+    "email":"mikeallo@gmail.com",
     "gender":"male",
     "role":"staff",
     "password":"mypass1"
@@ -46,7 +40,7 @@ Content-Type: application/json
 
 
 {
-    "email":"jmulwaa@gmail.com",
+    "email":"muthonijane@example.com",
     "password":"mypass1"
 
 }
@@ -55,27 +49,27 @@ Content-Type: application/json
 ###
 PATCH  http://localhost:4000/users/update-user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5OTE2MzAzLCJleHAiOjE2Nzk5Mzc5MDN9.YhTs5cj898zr3WL8DTNTKz9C21TlbYPZ5e77-evOQGI
 
 {
-    "id":"2",
-    "fullName":"Joanina Muthoni",
-    "email":"muthoni@example.com",
-    "phone":"25471285200"
+    "id":"105",
+    "fullName":"Jane Muthoni",
+    "email":"muthonijane@example.com",
+    "phone":"25471285333"
 }
 
 # add customer
 ###
 POST http://localhost:4000/users/add-customer
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YUBnbWFpbC5jb20iLCJpYXQiOjE2Nzk4MTk4NDQsImV4cCI6MTY3OTg0MTQ0NH0.ceqmFLExuK0wPxQXpLML2GI4vVTFTjEHlKJaj9rRGeo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
 
-# {
-#     "fullName": "Mark Msee",
-#     "phone": "254706007400",
-#     "email": "mustafa@gmail.com",
-#     "gender":"male"
-# }
+{
+    "fullName": "Mark Msee",
+    "phone": "254706007400",
+    "email": "mustafa@gmail.com",
+    "gender":"male"
+}
 
 # {
 #     "fullName": "Corey corey",
@@ -84,29 +78,29 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 #     "gender":"male"
 # }
 
-{
-    "fullName": "Corey mahn",
-    "phone": "254000600978",
-    "email": "kcore@gmail.com",
-    "gender":"male"
-}
+# {
+#     "fullName": "Corey mahn",
+#     "phone": "254000600978",
+#     "email": "kcore@gmail.com",
+#     "gender":"male"
+# }
 
 
 
 # all customers
 ###
 GET   http://localhost:4000/users/all-customers
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
 
 
 # single user
 ###
 POST    http://localhost:4000/users/single-customer
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YUBnbWFpbC5jb20iLCJpYXQiOjE2Nzk4MTk4NDQsImV4cCI6MTY3OTg0MTQ0NH0.ceqmFLExuK0wPxQXpLML2GI4vVTFTjEHlKJaj9rRGeo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
 
 {
-    "phone":"2478909009"
+    "phone":"25470607400"
 }
 
 

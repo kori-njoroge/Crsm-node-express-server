@@ -23,11 +23,10 @@ module.exports = {
                 .input('role', role)
                 .input('password', hash)
                 .execute(`add_user`)
-            data.rowsAffected > 1 && res.status(200).json({message:"User created succesfully"})
+            data.rowsAffected > 1 && res.status(200).json({ message: "User created succesfully" })
         } catch (error) {
             if (error.message.includes('Violation of UNIQUE KEY constraint')) {
                 res.json({ message: "User already exists" })
-
             } else {
                 res.status(400).json(error.originalError['info'].message)
             }
@@ -51,10 +50,11 @@ module.exports = {
                 .input('email', email)
                 .execute(`get_single_users`)
             if (data.recordset.length) {
+                let user = data.recordset[0]
                 let dbPass = data.recordset[0].password
                 let result = await bcrypt.compare(password, dbPass)
                 let token = createToken({ email })
-                result ? res.json({ response: "Login successful", token }) : res.json({ response: "Check your credentials" })
+                result ? res.json({ response: "Login successful", user, token }) : res.json({ response: "Check your credentials" })
             } else {
                 res.status(400).json({ message: 'User not found!' })
             }
