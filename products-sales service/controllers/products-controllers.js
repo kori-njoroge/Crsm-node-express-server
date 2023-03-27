@@ -43,11 +43,22 @@ module.exports = {
                 .input('approved', approved)
                 .execute(`update_product`)
             data.rowsAffected > 0 ? res.status(200).json({ message: `Details for:(${id}) updated successfully  on ${date}` })
-            :res.status(501).json({message:`product with id {${id}} not found`})
+                : res.status(501).json({ message: `product with id {${id}} not found` })
         } catch (error) {
             error.originalError['info']?.message.includes('Violation of UNIQUE KEY constraint') ?
                 res.status(400).json({ message: `Category {${productName}} already exists` }) :
                 res.status(400).json(error.originalError)
+        }
+    },
+    getAllProducts: async (req, res) => {
+
+        try {
+            await pool.connect()
+            let data = await pool.request().execute(`get_products`)
+            data.recordsets.length ? res.status(200).json(data.recordsets[0])
+            :res.status(501).json({ message: `Not completed try again later` })
+        } catch (error) {
+            res.status(400).json(error.originalError['info'].message)
         }
     }
 }
