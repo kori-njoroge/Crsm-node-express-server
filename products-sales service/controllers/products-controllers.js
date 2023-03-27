@@ -51,12 +51,24 @@ module.exports = {
         }
     },
     getAllProducts: async (req, res) => {
-
         try {
             await pool.connect()
             let data = await pool.request().execute(`get_products`)
             data.recordsets.length ? res.status(200).json(data.recordsets[0])
-            :res.status(501).json({ message: `Not completed try again later` })
+                : res.status(501).json({ message: `Not completed try again later` })
+        } catch (error) {
+            res.status(400).json(error.originalError['info'].message)
+        }
+    },
+    getSingleProduct: async (req, res) => {
+        const { productId } = req.params
+        try {
+            await pool.connect()
+            let data = await pool.request()
+                .input('prod_id', sql.Char(6), productId)
+                .execute(`get_product_by_id`)
+            data.recordset.length ? res.status(200).json(data.recordsets[0])
+                : res.status(501).json({ message: `Not records found` })
         } catch (error) {
             res.status(400).json(error.originalError['info'].message)
         }
