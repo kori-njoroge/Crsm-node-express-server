@@ -371,7 +371,7 @@ END
 GO
 --5. Query single product
 CREATE PROCEDURE get_product_by_id
-  @prod_id INT
+  @prod_id CHAR(6)
 AS
 BEGIN
   SELECT *
