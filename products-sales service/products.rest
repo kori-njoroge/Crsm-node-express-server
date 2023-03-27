@@ -5,26 +5,26 @@ Content-Type: application/json
 
 
 {
-    "email":"jmulwa@gmail.com",
+    "email":"jmulwaa@gmail.com",
     "password":"mypass1"
 
 }
 
 ###
 GET   http://localhost:4000/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTgzMzM4MSwiZXhwIjoxNjc5ODU0OTgxfQ.8bWhRuhIYO428ioLyuqtIWiL7QLxy38h45PH01DOc8I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
 
 ###
 POST http://localhost:4000/products/category/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
-{
-    "categoryName":"Cookies",
-    "description":"very healthy food",
-    "addedBy":105
-}
+# {
+#     "categoryName":"Cookies",
+#     "description":"very healthy food",
+#     "addedBy":105
+# }
 
 # {
 #     "categoryName":"Clothes",
@@ -38,24 +38,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 #     "addedBy":105
 # }
 
-# {
-#     "categoryName":"SNACKS",
-#     "description":"the best mouth attires",
-#     "addedBy":105
-# }
+{
+    "categoryName":"SNACKS",
+    "description":"the best mouth attires",
+    "addedBy":105
+}
 
 
 #get all categories
 ###
 GET http://localhost:4000/products/category/all-categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
 
 
 # get single category
 ###
 GET http://localhost:4000/products/category/single/318E46
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
 
 
@@ -64,7 +64,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 ###
 PATCH  http://localhost:4000/products/category/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
 {
     "catId":"318E6",
@@ -76,5 +76,57 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 #Delete category
 ###
 DELETE  http://localhost:4000/products/category/delete/318E46
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODU1MzIyLCJleHAiOjE2Nzk4NzY5MjJ9.H6XsfklR2nXPJ9LxRnmeegug70Qradw0T8Si6N0Wy2w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
 
+//PRODUCTS
+# add prod
+###
+POST http://localhost:4000/products/add/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+
+
+# {
+#     "productName":"Ringoz",
+#     "description":"very healthy food",
+#     "addedBy":105,
+#     "price":3,
+#     "itemsAdded":100,
+#     "categoryId":"AA7EF3"
+# }
+
+
+# {
+#     "productName":"more Ringoz",
+#     "description":"very healthy food for food",
+#     "addedBy":105,
+#     "price":5,
+#     "itemsAdded":120,
+#     "categoryId":"AA7EF3"
+# }
+
+{
+    "productName":"Huawei drier",
+    "description":"spin and dry",
+    "addedBy":107,
+    "price":5,
+    "itemsAdded":120,
+    "categoryId":"9887EB"
+}
+
+
+# edit prod
+###
+POST http://localhost:4000/products/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+
+{
+    "id":"CAEAE7",
+    "productName":"Huawei drier motor motor",
+    "description":"spin and dry and clothe and go",
+    "updatedBy":105,
+    "price":10,
+    "quantity":150,
+    "approved":1
+}
