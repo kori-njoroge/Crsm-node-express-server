@@ -1,5 +1,6 @@
 const express = require('express');
 const { categoryRouter } = require('./routes/category-routes');
+const { productsRouter } = require('./routes/products-routes');
 require('dotenv').config()
 
 
@@ -11,6 +12,7 @@ app.get('/products', (req, res) => {
     res.json({ message: "Product route reached" })
 })
 
+app.use('/products',productsRouter)
 app.use('/products/category', categoryRouter)
 
 const port = process.env.PORT || 8010
