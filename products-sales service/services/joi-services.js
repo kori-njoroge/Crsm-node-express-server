@@ -24,7 +24,8 @@ const createProductSchema = Joi.object({
     addedBy: Joi.number().required(),
     price: Joi.number().required(),
     quantity: Joi.number().required(),
-    categoryId: Joi.string().alphanum().required()
+    categoryId: Joi.string().alphanum().required(),
+    token: Joi.string().required()
 })
 
 const updateProductSchema = Joi.object({
