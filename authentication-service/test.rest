@@ -7,7 +7,7 @@ GET http://localhost:4000/notifications/
 ###
 GET    http://localhost:4000/users/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvbmlqYW5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjc5OTgwMTI5LCJleHAiOjE2ODAwMDE3Mjl9.Md2Av5JPrRO3pts2QAE7FP2R2FIrcIMJV5yvDLvdoq8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM
 
 # add users
 ###
@@ -42,12 +42,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 #     "password":"mypass1"
 # }
 
+# {
+#     "fullName":"John Mungai",
+#     "phone":254706844,
+#     "email":"m25909577044199john@gmail.com",
+#     "gender":"male",
+#     "role":"customer"    
+# }
+
 {
-    "fullName":"John Mungai",
-    "phone":704040414,
-    "email":"mungaijohn@gmail.com",
-    "gender":"male",
-    "role":"super admin"
+    "fullName":"Joaninah J",
+    "phone":254115834321,
+    "email":"korinjoroge63@gmail.com",
+    "gender":"female",
+    "role":" Super Admin",
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM"    
 }
 
 
@@ -58,8 +67,8 @@ Content-Type: application/json
 
 
 {
-    "email":"mungaijohn@gmail.com",
-    "password":"ad472c52"
+    "email":"korinjoroge63@gmail.com",
+    "password":"8eb8253d"
 
 }
 
@@ -67,13 +76,13 @@ Content-Type: application/json
 ###
 PATCH  http://localhost:4000/users/update-user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvbmlqYW5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjc5OTgwMTI5LCJleHAiOjE2ODAwMDE3Mjl9.Md2Av5JPrRO3pts2QAE7FP2R2FIrcIMJV5yvDLvdoq8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM
 
 {
-    "id":"105",
+    "id":"179",
     "fullName":"Jane Muthoni",
-    "email":"muthonijane@example.com",
-    "phone":"25471285333"
+    "email":"muthakjane@example.com",
+    "phone":"25478530933"
 }
 
 # add customer
