@@ -1,5 +1,6 @@
 const sql = require('mssql');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto')
 
 const { config } = require('../sql-config');
 const { createToken } = require('../services/jwt-token.js');
@@ -12,23 +13,42 @@ module.exports = {
     //users
     addUser: async (req, res) => {
         const { fullName, phone, email, password, role, gender } = req.body;
-        let hash = await bcrypt.hash(password, 8)
-        try {
-            await pool.connect()
-            const data = await pool.request()
+        if (role.toLowerCase() === 'customer') {
+            try {
+                await pool.connect()
+                const data = await pool.request()
                 .input('full_name', fullName)
-                .input('phone', phone)
-                .input('gender', gender)
-                .input('email', email)
-                .input('role', role)
-                .input('password', hash)
-                .execute(`add_user`)
-            data.rowsAffected > 1 && res.status(200).json({ message: "User created succesfully" })
-        } catch (error) {
-            if (error.message.includes('Violation of UNIQUE KEY constraint')) {
-                res.json({ message: "User already exists" })
-            } else {
-                res.status(400).json(error.originalError['info'].message)
+                    .input('phone', phone)
+                    .input('gender', gender)
+                    .input('email', email)
+                    .execute(`add_customer`)
+                data.rowsAffected.includes(1) && res.status(200).json({ message: "User created succesfully" })
+            } catch (error) {
+                if (error) {
+                    res.json({ message: "User already exists" })
+                }
+            }
+        }else{
+            let crytoPassword = crypto.randomBytes(64).toString('hex').substring(0,8);
+            console.log("crytoPassword",crytoPassword)
+            let hash = await bcrypt.hash(password, 8)
+            try {
+                await pool.connect()
+                const data = await pool.request()
+                    .input('full_name', fullName)
+                    .input('phone', phone)
+                    .input('gender', gender)
+                    .input('email', email)
+                    .input('role', role)
+                    .input('password', hash)
+                    .execute(`add_user`)
+                data.rowsAffected.includes(1) && res.status(200).json({ message: "User created succesfully" })
+            } catch (error) {
+                if (error.message.includes('Violation of UNIQUE KEY constraint')) {
+                    res.json({ message: "User already exists" })
+                } else {
+                    res.status(400).json(error.originalError['info'].message)
+                }
             }
         }
     },
