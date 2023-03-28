@@ -1,36 +1,54 @@
 const sql = require('mssql');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto')
+const axios = require('axios')
 
 const { config } = require('../sql-config');
 const { createToken } = require('../services/jwt-token.js');
 
 const pool = new sql.ConnectionPool(config)
 
+const mailRoute = 'http://localhost:4000/notifications/'
 
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM'
 
 module.exports = {
     //users
     addUser: async (req, res) => {
-        const { fullName, phone, email, role, gender } = req.body;
+        const { fullName, phone, email, role, gender, token } = req.body;
         if (role.toLowerCase() === 'customer') {
             try {
                 await pool.connect()
                 const data = await pool.request()
-                .input('full_name', fullName)
+                    .input('full_name', fullName)
                     .input('phone', phone)
                     .input('gender', gender)
                     .input('email', email)
                     .execute(`add_customer`)
-                data.rowsAffected.includes(1) && res.status(200).json({ message: "User created succesfully" })
+                if (data.rowsAffected.includes(1)) {
+                    axios.post(`${mailRoute}/customer`, req.body, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            data: JSON.stringify(req.body)
+                        }
+                    }
+                    ).then(reply => {
+                        reply?.data?.includes('OK') ? res.status(200).json({ message: "User created succesfully" })
+                            : res.status(500).json(reply.data)
+                    }).catch(error => {
+                        !error.length ? res.status(200).json({ message: "User created succesfully" })
+                            : res.status(500).json({ error })
+                    })
+                } else {
+                    res.status(500).json({ message: "Try again later" })
+                }
             } catch (error) {
                 if (error) {
                     res.json({ message: "User already exists" })
                 }
             }
-        }else{
-            let crytoPassword = crypto.randomBytes(64).toString('hex').substring(0,8);
-            console.log("crytoPassword",crytoPassword)
+        } else {
+            let crytoPassword = crypto.randomBytes(64).toString('hex').substring(0, 8);
             let hash = await bcrypt.hash(crytoPassword, 8)
             try {
                 await pool.connect()
@@ -42,7 +60,21 @@ module.exports = {
                     .input('role', role)
                     .input('password', hash)
                     .execute(`add_user`)
-                data.rowsAffected.includes(1) && res.status(200).json({ message: "User created succesfully",crytoPassword })
+                if (data.rowsAffected.includes(1)) {
+                    maildata = [req.body, { crytoPassword }]
+                    axios.post(`${mailRoute}/add-user`, req.body,
+                        {
+                            headers: {
+                                'Authorization': `Bearer ${token}`,
+                                data: JSON.stringify(maildata)
+                            }
+                        }
+                    ).then(reply => {
+                        res.status(200).json({ message: "User created succesfully" })
+                    }).catch(err => {
+                        res.json(err)
+                    })
+                }
             } catch (error) {
                 if (error.message.includes('Violation of UNIQUE KEY constraint')) {
                     res.json({ message: "User already exists" })
@@ -58,7 +90,6 @@ module.exports = {
             let data = await pool.request().execute(`get_users`)
             res.json(data.recordset)
         } catch (error) {
-            console.log(error)
             res.status(500).json({ message: "Its not you is us" })
         }
     },
@@ -92,7 +123,6 @@ module.exports = {
                 .input('new_email', email)
                 .input('new_phone', phone)
                 .execute(`update_user_det`)
-            // res.json(data)
             data.rowsAffected.includes(1) ?
                 res.status(200).json({ message: "User details updated successfully" })
                 : res.status(400).json({ message: `User with id:{${id}} does not exist` })
@@ -112,7 +142,7 @@ module.exports = {
                 .input('phone', phone)
                 .input('gender', gender)
                 .execute(`add_customer`)
-            data.rowsAffected.length > 0 ? res.status(200).json({ message: "Customer added  successfully" }) : res.status(500).json({ message: "Request not completed try again later" })
+            data.rowsAffected.includes(1) ? res.status(200).json({ message: "Customer added  successfully" }) : res.status(500).json({ message: "Request not completed try again later" })
         } catch (error) {
             res.status(400).json(error.precedingErrors.map((err, index) => `${index + 1}-> ${err.message}`));
         }
@@ -133,7 +163,6 @@ module.exports = {
             let data = await pool.request()
                 .input('phone', phone)
                 .execute(`get_single_customer`)
-            console.log(data)
             !data.recordset.length ? res.status(200).json("No records found") : res.status(200).json(data.recordset)
         } catch (error) {
             res.status(500).json(error.message)
