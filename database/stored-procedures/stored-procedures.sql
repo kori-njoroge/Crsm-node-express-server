@@ -40,7 +40,25 @@ BEGIN
   WHERE email = @email
 END
 GO
-
+-- by id
+CREATE PROCEDURE get_user_by_id
+  @user_id CHAR(6)
+AS
+BEGIN
+  SELECT *
+  FROM users
+  WHERE id = @user_id
+END
+GO
+-- all except customer
+CREATE PROCEDURE get_employees
+AS
+BEGIN
+  SELECT *
+  FROM users
+  WHERE role <> 'customer'
+END
+GO
 
 -- update user details
 CREATE PROCEDURE update_user_det
