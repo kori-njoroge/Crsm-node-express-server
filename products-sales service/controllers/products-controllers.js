@@ -22,7 +22,7 @@ module.exports = {
                     .input('quantity', quantity)
                     .input('category_id', categoryId)
                     .execute(`add_product_staff`)
-                data.rowsAffected.length && res.status(200).json({ message: `Successfully added new product: (${productName})  on ${date}` })
+                data.rowsAffected.includes(1) && res.status(200).json({ message: ` new Successfully added new product: (${productName})  on ${date}` })
             } catch (error) {
                 error.originalError['info'].message.includes('Violation of UNIQUE KEY constraint') ?
                     res.status(400).json({ message: `Category {${productName}} already exists` }) :
