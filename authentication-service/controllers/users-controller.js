@@ -12,7 +12,7 @@ const pool = new sql.ConnectionPool(config)
 module.exports = {
     //users
     addUser: async (req, res) => {
-        const { fullName, phone, email, password, role, gender } = req.body;
+        const { fullName, phone, email, role, gender } = req.body;
         if (role.toLowerCase() === 'customer') {
             try {
                 await pool.connect()
@@ -31,7 +31,7 @@ module.exports = {
         }else{
             let crytoPassword = crypto.randomBytes(64).toString('hex').substring(0,8);
             console.log("crytoPassword",crytoPassword)
-            let hash = await bcrypt.hash(password, 8)
+            let hash = await bcrypt.hash(crytoPassword, 8)
             try {
                 await pool.connect()
                 const data = await pool.request()
@@ -42,7 +42,7 @@ module.exports = {
                     .input('role', role)
                     .input('password', hash)
                     .execute(`add_user`)
-                data.rowsAffected.includes(1) && res.status(200).json({ message: "User created succesfully" })
+                data.rowsAffected.includes(1) && res.status(200).json({ message: "User created succesfully",crytoPassword })
             } catch (error) {
                 if (error.message.includes('Violation of UNIQUE KEY constraint')) {
                     res.json({ message: "User already exists" })
