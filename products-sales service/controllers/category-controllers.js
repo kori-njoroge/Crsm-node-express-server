@@ -19,7 +19,7 @@ module.exports = {
                     .input('category_name', categoryName)
                     .input('description', description)
                     .input('added_by', addedBy)
-                    .execute(`add_category`)
+                    .execute(`add_category_staff`)
                 data.rowsAffected.length && res.status(200).json({ message: `Successfully added new category: (${categoryName})  on ${date}` })
             } catch (error) {
                 error.originalError.message.includes('Violation of UNIQUE KEY constraint') ?
@@ -33,8 +33,8 @@ module.exports = {
                     .input('category_name', categoryName)
                     .input('description', description)
                     .input('added_by', addedBy)
-                    .input('approved',1)
-                    .execute(`add_category`)
+                    .input('approved', 1)
+                    .execute(`add_category_admin`)
                 data.rowsAffected.length && res.status(200).json({ message: `Successfully added new category: (${categoryName})  on ${date}` })
             } catch (error) {
                 error.originalError.message.includes('Violation of UNIQUE KEY constraint') ?
