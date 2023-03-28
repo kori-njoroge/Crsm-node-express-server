@@ -3,6 +3,7 @@ const Joi = require('joi')
 
 // CATEGORY VALIDATION SCHEMAS
 const createCategorySchema = Joi.object({
+    role:Joi.string().required(),
     categoryName: Joi.string().required(),
     description: Joi.string().required(),
     addedBy: Joi.number().required()
