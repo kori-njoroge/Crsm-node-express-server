@@ -14,9 +14,6 @@ const addUserSchema = Joi.object({
 
     gender: Joi.string().valid('male', 'female').required(),
     role: Joi.string().valid('super admin', 'admin', 'staff', 'customer').required(),
-    password: Joi.string()
-        .pattern(new RegExp('^[a-zA-Z1-9]{5,30}'))
-        .required()
 })
 
 const loginSchema = Joi.object({
