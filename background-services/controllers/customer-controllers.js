@@ -20,6 +20,21 @@ module.exports = {
         let response = await sendMail(mailOptions)
         res.json(response)
     },
+    purchasedCustomer: async (req, res) => {
+        const mailOptions = {
+            from: process.env.USER_EMAIL,
+            to: [`korijunior107@gmail.com`,`joaninasender@gmail.com`],
+            subject: `Purchase`,
+            template: 'purchase',
+            context: {
+                name: `${'Gideon Kori'}`,
+                company: 'ClientHive',
+            }
+        }
+        const response = await sendMail(mailOptions)
+        console.log(response)
+        res.status(200).json(response)
+    },
     // User
     addUser: async (req, res) => {
         let data = await JSON.parse(req.headers.data)
