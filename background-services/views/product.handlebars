@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/styles/welcome.css">
+    <title>Welcome Email</title>
+    <style>
+        p {
+            margin: none;
+            margin-top: 1vh;
+            font-size: 14px;
+        }
+
+        h2,
+        .regards,
+        small {
+            color: #0ed3da;
+        }
+
+        .login {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .prod-det {
+            margin: 0.2vh;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Dear, {{name}}! </h2>
+    <p>We would like to inform you that a new product has been added to our platform by {{addedBy}}. We kindly request
+        you to review the product as soon as possible.</p>
+
+    <p>The details of the product are as follows:</p>
+
+    <p class="prod-det"> Product Name: <b>{{productName}}</b></p>
+    <p class="prod-det"> Product Description: <b>{{proDescription}}</b></p>
+    <p class="prod-det"> Product Category: <b>{{productCategory}}</b></p>
+    <p class="prod-det"> Product Price: <b>{{price}}</b></p>
+    <p class="prod-det"> Added By: <b>{{addedBy}}</b></p>
+
+    <p> Please note that this product will not be visible to our customers until it has been approved. We
+        appreciate your prompt attention to this matter.</p>
+
+    <p> If you have any questions or concerns regarding the product, please do not hesitate to <a
+            href="https://wa.me/+254706306415">contact us.</a></p>
+
+    <p> Thank you for your time and attention.</p>
+
+    <p style="margin-bottom: 0;">Best regards</p>
+    <small><b>{{company}}.org</b></small><br>
+    <small><b>+254706306415</b></small>
+</body>
+
+</html>
