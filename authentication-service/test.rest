@@ -43,12 +43,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 # }
 
 {
-    "fullName":"John Terry",
-    "phone":790995606,
-    "email":"johnjerry@gmail.com",
+    "fullName":"John Mungai",
+    "phone":704040414,
+    "email":"mungaijohn@gmail.com",
     "gender":"male",
-    "role":"super admin",
-    "password":"mypass1"
+    "role":"super admin"
 }
 
 
@@ -59,8 +58,8 @@ Content-Type: application/json
 
 
 {
-    "email":"muthonijane@example.com",
-    "password":"mypass1"
+    "email":"mungaijohn@gmail.com",
+    "password":"ad472c52"
 
 }
 
