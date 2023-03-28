@@ -1,0 +1,13 @@
+GET http://localhost:7000/notifications
+
+
+#added customer email
+###
+POST  http://localhost:4000/notifications/customer/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDA5MTA3LCJleHAiOjE2ODAwOTU1MDd9.pCNA9pMWmyW9CoE5DTVX6TGnqtelAfYmCtDvEtbOGho
+
+# add user
+###
+POST  http://localhost:4000/notifications/add-user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDA5MTA3LCJleHAiOjE2ODAwOTU1MDd9.pCNA9pMWmyW9CoE5DTVX6TGnqtelAfYmCtDvEtbOGho
+

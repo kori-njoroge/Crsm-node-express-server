@@ -5,8 +5,8 @@ Content-Type: application/json
 
 
 {
-    "email":"jmulwaa@gmail.com",
-    "password":"mypass1"
+    "email":"mungaijohn@gmail.com",
+    "password":"ad472c52"
 
 }
 
@@ -18,7 +18,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2Vhb
 ###
 POST http://localhost:4000/products/category/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvbmlqYW5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjc5OTgwMTI5LCJleHAiOjE2ODAwMDE3Mjl9.Md2Av5JPrRO3pts2QAE7FP2R2FIrcIMJV5yvDLvdoq8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDIyNTU5LCJleHAiOjE2ODAxMDg5NTl9.3Oq7F_Dq9dGeczZI9nev60ovROgOGPnShIEkcUOnZCM
 
 # {   "role":"staff",
 #     "categoryName":"Home made burns",
@@ -32,17 +32,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvb
 #     "addedBy":105
 # }
 
-{   "role":"staff",
-    "categoryName":"Snezkers",
-    "description":"the best feet attires",
-    "addedBy":105
-}
-
-# {
-#     "categoryName":"SNACKS",
-#     "description":"the best mouth attires",
+# {   "role":"staff",
+#     "categoryName":"Snezkers",
+#     "description":"the best feet attires",
 #     "addedBy":105
 # }
+
+{   "role":"admin",
+    "categoryName":"SNACKS",
+    "description":"the best mouth attires",
+    "addedBy":105
+}
 
 
 #get all categories
