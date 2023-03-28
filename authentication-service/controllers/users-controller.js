@@ -126,8 +126,8 @@ module.exports = {
                 .input('email', email)
                 .input('phone', phone)
                 .execute(`update_customer`)
-            console.log(data)
-            data.rowsAffected.length > 0 ? res.status(200).json({ message: "Customer details updated successfully" }) : res.status(400).json({ message: "Request not completed try again later" })
+            data.rowsAffected.includes(0) ? res.status(400).json({ message: `User with id:{${id}} does not exist` })
+            : res.status(200).json({ message: "Customer details updated successfully" })
         } catch (error) {
             res.status(400).json(error.originalError['info'].message)
         }
