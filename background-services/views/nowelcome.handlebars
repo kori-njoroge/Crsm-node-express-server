@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/styles/welcome.css">
+    <title>Welcome Email</title>
+    <style>
+        p {
+            margin: none;
+            margin-top: 1vh;
+            font-size: 14px;
+        }
+
+        h2,
+        .regards,
+        small {
+            color: #0ed3da;
+        }
+
+        .login {
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Dear,{{name}}! </h2>
+    <p>Thank you for joining <b>{{company}}</b>! </p>
+    <p>We would like to extend a warm welcome to you as our newest team member! We are thrilled to have you join us and
+        look forward to working with you.</p>
+
+    <p style="margin-bottom: 0;">As part of our onboarding process, we would like to provide you with your initial login information. Please find
+        your login credentials below:</p>
+    <p style="margin:0;">Your role is: <b>{{role}}</b></p>
+
+    <p class="login" style="margin-bottom: 0;">Email: {{email}}</p>
+    <p class="login" style="margin-top: 0;">Password: {{password}}</p>
+
+
+    <p>Please log in using these credentials and create a new password as soon as possible. This will ensure the
+        security of your account.</p>
+
+    <p>If you need any assistance with your login or have any other quetions, please dont hesitate to <a
+            href="https://wa.me/+254706306415">contact us.</a> </p>
+    <p>Once again, welcome to the team! We are exited to have you on board and look forward working together. </p>
+
+    <p style="margin-bottom: 0;">Best regards</p>
+    <small><b>{{company}}.org</b></small><br>
+    <small><b>+254706306415</b></small>
+</body>
+
+</html>
