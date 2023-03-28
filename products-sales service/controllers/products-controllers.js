@@ -1,8 +1,10 @@
 const sql = require('mssql')
 require('dotenv').config()
 const { config } = require('../sql-config')
+const axios = require('axios')
 
 const pool = new sql.ConnectionPool(config)
+const mailRoute = 'http://localhost:4000/notifications/'
 
 let date = new Date
 date = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
@@ -10,7 +12,7 @@ date = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
 module.exports = {
     // add products
     addProduct: async (req, res) => {
-        const { productName, description, addedBy, price, quantity, categoryId, role } = req.body
+        const { productName, description, addedBy, price, quantity, categoryId, role, token } = req.body
         if (role.toLowerCase() === 'staff') {
             try {
                 await pool.connect()
@@ -22,10 +24,21 @@ module.exports = {
                     .input('quantity', quantity)
                     .input('category_id', categoryId)
                     .execute(`add_product_staff`)
-                data.rowsAffected.includes(1) && res.status(200).json({ message: ` new Successfully added new product: (${productName})  on ${date}` })
+                if (data.rowsAffected.includes(1)) {
+                    axios.post(`${mailRoute}/new-product`, req.body, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            data: JSON.stringify(req.body)
+                        }
+                    }).then(reply => {
+                        reply.data.includes('OK') && res.status(200).json({ message: ` Successfully added new product: (${productName})  on ${date}` })
+                    }).catch(err => {
+                        res.status(500).json({ message: "Try again later" })
+                    })
+                }
             } catch (error) {
                 error.originalError['info'].message.includes('Violation of UNIQUE KEY constraint') ?
-                    res.status(400).json({ message: `Category {${productName}} already exists` }) :
+                    res.status(400).json({ message: `Product {${productName}} already exists` }) :
                     res.status(400).json(error.originalError)
             }
         } else {
