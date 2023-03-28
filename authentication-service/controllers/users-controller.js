@@ -72,7 +72,10 @@ module.exports = {
                 .input('new_email', email)
                 .input('new_phone', phone)
                 .execute(`update_user_det`)
-            data.rowsAffected.length > 0 ? res.status(200).json({ message: "User details updated successfully" }) : res.status(500).json({ message: "Request not completed try again later" })
+            // res.json(data)
+            data.rowsAffected.includes(1) ?
+                res.status(200).json({ message: "User details updated successfully" })
+                : res.status(400).json({ message: `User with id:{${id}} does not exist` })
         } catch (error) {
             res.status(400).json(error.originalError['info'].message)
         }
@@ -126,8 +129,9 @@ module.exports = {
                 .input('email', email)
                 .input('phone', phone)
                 .execute(`update_customer`)
-            data.rowsAffected.includes(0) ? res.status(400).json({ message: `User with id:{${id}} does not exist` })
-            : res.status(200).json({ message: "Customer details updated successfully" })
+            data.rowsAffected.includes(1) ?
+                res.status(200).json({ message: "Customer details updated successfully" })
+                : res.status(400).json({ message: `customer with id:{${id}} does not exist` })
         } catch (error) {
             res.status(400).json(error.originalError['info'].message)
         }

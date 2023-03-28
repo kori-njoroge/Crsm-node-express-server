@@ -7,7 +7,7 @@ GET http://localhost:4000/notifications/
 ###
 GET    http://localhost:4000/users/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvbmlqYW5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjc5OTgwMTI5LCJleHAiOjE2ODAwMDE3Mjl9.Md2Av5JPrRO3pts2QAE7FP2R2FIrcIMJV5yvDLvdoq8
 
 # add users
 ###
@@ -49,7 +49,7 @@ Content-Type: application/json
 ###
 PATCH  http://localhost:4000/users/update-user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5OTE2MzAzLCJleHAiOjE2Nzk5Mzc5MDN9.YhTs5cj898zr3WL8DTNTKz9C21TlbYPZ5e77-evOQGI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvbmlqYW5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjc5OTgwMTI5LCJleHAiOjE2ODAwMDE3Mjl9.Md2Av5JPrRO3pts2QAE7FP2R2FIrcIMJV5yvDLvdoq8
 
 {
     "id":"105",
