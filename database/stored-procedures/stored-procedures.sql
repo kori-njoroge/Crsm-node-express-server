@@ -247,7 +247,22 @@ GO
 
 
 -- CATEGORIES
-CREATE PROCEDURE add_category
+CREATE PROCEDURE add_category_admin
+  @category_name VARCHAR(255),
+  @description NVARCHAR(255),
+  @added_by INT,
+  @approved BIT 
+
+AS
+BEGIN
+  INSERT INTO categories
+    ([name],[description],added_by,updated_by,added_on,approved)
+  VALUES(@category_name, @description, @added_by, @added_by, GETDATE(), @approved)
+END
+GO
+
+-- add category staff
+CREATE PROCEDURE add_category_staff
   @category_name VARCHAR(255),
   @description NVARCHAR(255),
   @added_by INT
@@ -312,7 +327,7 @@ GO
 
 -- PRODUCTS
 -- 1. Add product
-CREATE PROCEDURE add_product
+CREATE PROCEDURE add_product_staff
   @name VARCHAR(255),
   @description NVARCHAR(255),
   @added_by INT,
@@ -325,6 +340,24 @@ BEGIN
     ([name],[description],added_by, price, quantity, added_on, category_id,updated_by)
   VALUES
     (@name, @description, @added_by, @price, @quantity, GETDATE(), @category_id, @added_by)
+END
+GO
+
+-- add product admin
+CREATE PROCEDURE add_product_admin
+  @name VARCHAR(255),
+  @description NVARCHAR(255),
+  @added_by INT,
+  @price FLOAT,
+  @quantity INT,
+  @category_id CHAR(6),
+  @approved BIT
+AS
+BEGIN
+  INSERT INTO products
+    ([name],[description],added_by, price, quantity, added_on, category_id,updated_by,approved)
+  VALUES
+    (@name, @description, @added_by, @price, @quantity, GETDATE(), @category_id, @added_by,@approved)
 END
 GO
 

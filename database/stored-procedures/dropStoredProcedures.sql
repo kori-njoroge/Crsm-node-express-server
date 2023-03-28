@@ -15,12 +15,14 @@ DROP PROCEDURE IF EXISTS get_all_sales_with_products
 DROP PROCEDURE IF EXISTS get_sale_details
 DROP PROCEDURE IF EXISTS add_notification
 DROP PROCEDURE IF EXISTS get_notitications
-DROP PROCEDURE IF EXISTS add_category
+DROP PROCEDURE IF EXISTS add_category_staff
+DROP PROCEDURE IF EXISTS add_category_admin
 DROP PROCEDURE IF EXISTS update_category
 DROP PROCEDURE IF EXISTS delete_category
 DROP PROCEDURE IF EXISTS get_categories
 DROP PROCEDURE IF EXISTS get_category_by_id
-DROP PROCEDURE IF EXISTS add_product
+DROP PROCEDURE IF EXISTS add_product_staff
+DROP PROCEDURE IF EXISTS add_product_admin
 DROP PROCEDURE IF EXISTS delete_product
 DROP PROCEDURE IF EXISTS update_product
 DROP PROCEDURE IF EXISTS get_products
