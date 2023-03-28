@@ -14,6 +14,7 @@ const addUserSchema = Joi.object({
 
     gender: Joi.string().valid('male', 'female').required(),
     role: Joi.string().valid('super admin', 'admin', 'staff', 'customer').required(),
+    token:Joi.string().required()
 })
 
 const loginSchema = Joi.object({
