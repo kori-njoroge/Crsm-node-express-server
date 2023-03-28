@@ -1,4 +1,9 @@
+const sql = require('mssql')
+
 const { sendMail } = require("../services/node-mailer")
+const { config } = require('../sql-config')
+
+const pool = new sql.ConnectionPool(config)
 
 module.exports = {
     // User
@@ -24,23 +29,40 @@ module.exports = {
     },
     // admin new products need approval
     approveProduct: async (req, res) => {
-        const mailOptions = {
-            from: process.env.USER_EMAIL,
-            to: [`korijunior107@gmail.com`],
-            subject: `New product`,
-            template: 'product',
-            context: {
-                name: `Rick Sanches`,
-                company: 'ClientHive',
-                productName: 'Ringoz',
-                proDescription: 'The best food to kill your teeth',
-                productCategory: 'Bites and others',
-                price: '$3',
-                addedBy: 'Maiko'
+        const { productName, description, addedBy, categoryId, price } = JSON.parse(req.headers?.data)
+        try {
+            await pool.connect()
+            let data = await pool.request()
+                .input('user_id', addedBy)
+                .execute(`get_user_by_id`)
+            data = data?.recordset[0]?.full_name
+            let category = await pool.request()
+                .input('category_id', sql.Char(6), categoryId)
+                .execute(`get_category_by_id`)
+            category = category?.recordset[0]?.name
+            const mailList = (await pool.request().execute(`get_employees`))?.recordset
+            const emails = mailList.map(item => item.email)
+            console.log("mail", emails)
+            const mailOptions = {
+                from: process.env.USER_EMAIL,
+                to: emails,
+                subject: `New product`,
+                template: 'product',
+                context: {
+                    name: `User`,
+                    company: 'ClientHive',
+                    productName: `${productName}`,
+                    proDescription: `${description}`,
+                    productCategory: `${category}`,
+                    price: `$${price}`,
+                    addedBy: `${data}`
+                }
             }
+            const response = await sendMail(mailOptions)
+            console.log(response)
+            res.status(200).json(response)
+        } catch (error) {
+            res.status(500).json(error)
         }
-        const response = await sendMail(mailOptions)
-        console.log(response)
-        res.status(200).json(response)
     }
 }
