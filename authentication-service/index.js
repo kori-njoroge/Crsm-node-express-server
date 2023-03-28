@@ -7,17 +7,23 @@ require('dotenv').config()
 
 const app = express();
 
-var restream = function (proxyReq, req, res, options) {
-    console.log(req.body)
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,PATCH');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
+
+let restream = function (proxyReq, req, res, options) {
+    // console.log("the body with token",req.headers.authorization)
     let valid = validateJwtTokenForeign(proxyReq, req, res)
-    console.log("validity", valid)
     if (valid === true) {
         if (req.body) {
             let bodyData = JSON.stringify(req.body);
             proxyReq.setHeader('Content-Type', 'application/json');
             proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
             proxyReq.write(bodyData);
-        }else{
+        } else {
             proxyReq.setHeader('X-Forwarded-For', req.ip)
         }
     } else if (valid === 401) {
@@ -35,12 +41,12 @@ const productsProxy = createProxyMiddleware('/products',
         onProxyReq: restream
     })
 
-const notifyProxy = createProxyMiddleware('/notifications', {
-    target: 'http://localhost:7000',
-    onProxyReq: (proxyReq, req, res, next) => {
-        validateJwtTokenForeign(proxyReq, req, res, next)
+const notifyProxy = createProxyMiddleware('/notifications',
+    {
+        target: 'http://localhost:7000',
+        onProxyReq: restream
     }
-})
+)
 
 
 app.use(express.urlencoded({ extended: true }))
