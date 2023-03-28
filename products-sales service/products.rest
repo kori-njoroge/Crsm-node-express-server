@@ -26,17 +26,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvb
 #     "addedBy":105
 # }
 
-{   "role":"admin",
-    "categoryName":" Women Clothes",
-    "description":"the best attires",
-    "addedBy":105
-}
-
-# {
-#     "categoryName":"Snezkers",
-#     "description":"the best feet attires",
+# {   "role":"admin",
+#     "categoryName":" Women Clothes",
+#     "description":"the best attires",
 #     "addedBy":105
 # }
+
+{   "role":"staff",
+    "categoryName":"Snezkers",
+    "description":"the best feet attires",
+    "addedBy":105
+}
 
 # {
 #     "categoryName":"SNACKS",
@@ -48,7 +48,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvb
 #get all categories
 ###
 GET http://localhost:4000/products/category/all-categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvbmlqYW5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjc5OTgwMTI5LCJleHAiOjE2ODAwMDE3Mjl9.Md2Av5JPrRO3pts2QAE7FP2R2FIrcIMJV5yvDLvdoq8
 
 
 
@@ -64,7 +64,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2Vhb
 ###
 PATCH  http://localhost:4000/products/category/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvbmlqYW5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjc5OTgwMTI5LCJleHAiOjE2ODAwMDE3Mjl9.Md2Av5JPrRO3pts2QAE7FP2R2FIrcIMJV5yvDLvdoq8
 
 {
     "catId":"5F82D8",
@@ -83,36 +83,36 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 ###
 POST http://localhost:4000/products/add/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvbmlqYW5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjc5OTgwMTI5LCJleHAiOjE2ODAwMDE3Mjl9.Md2Av5JPrRO3pts2QAE7FP2R2FIrcIMJV5yvDLvdoq8
+
+{
+    "role":"staff",
+    "productName":"Ringoz tamu",
+    "description":"very healthy food",
+    "addedBy":105,
+    "price":3,
+    "quantity":100,
+    "categoryId":"70DEAE"
+}
 
 
-# {
-#     "productName":"Ringoz",
-#     "description":"very healthy food",
-#     "addedBy":105,
-#     "price":3,
-#     "itemsAdded":100,
-#     "categoryId":"AA7EF3"
-# }
-
-
-# {
+# {   "role":"admin",
 #     "productName":"more Ringoz",
 #     "description":"very healthy food for food",
 #     "addedBy":105,
 #     "price":5,
-#     "itemsAdded":120,
-#     "categoryId":"AA7EF3"
+#     "quantity":120,
+#     "categoryId":"70DEAE"
 # }
 
-{
-    "productName":"Huawei drier",
-    "description":"spin and dry",
-    "addedBy":107,
-    "price":5,
-    "quantity":120,
-    "categoryId":"9887EB"
-}
+# {   "role":"admin",
+#     "productName":"Huawei drier",
+#     "description":"spin and dry",
+#     "addedBy":107,
+#     "price":5,
+#     "quantity":120,
+#     "categoryId":"70DEAE"
+# }
 
 
 # edit prod
@@ -135,7 +135,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 ###
 GET  http://localhost:4000/products/all
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+Authorization: Bearer 5F82D8
 
 # single product
 ###
