@@ -11,3 +11,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdha
 POST  http://localhost:4000/notifications/add-user/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDA5MTA3LCJleHAiOjE2ODAwOTU1MDd9.pCNA9pMWmyW9CoE5DTVX6TGnqtelAfYmCtDvEtbOGho
 
+
+
+# purchased
+###
+POST  http://localhost:4000/notifications/purchase/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDA5MTA3LCJleHAiOjE2ODAwOTU1MDd9.pCNA9pMWmyW9CoE5DTVX6TGnqtelAfYmCtDvEtbOGho
+
+
+
+# purchased
+###
+POST  http://localhost:4000/notifications/new-product
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDA5MTA3LCJleHAiOjE2ODAwOTU1MDd9.pCNA9pMWmyW9CoE5DTVX6TGnqtelAfYmCtDvEtbOGho

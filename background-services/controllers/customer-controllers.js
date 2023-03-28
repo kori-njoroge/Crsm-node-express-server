@@ -1,5 +1,10 @@
+const sql = require('mssql')
 const { sendMail } = require('../services/node-mailer')
 require('dotenv').config()
+
+const { config } = require('dotenv')
+
+const pool = new sql.ConnectionPool(config)
 
 
 module.exports = {
@@ -21,9 +26,10 @@ module.exports = {
         res.json(response)
     },
     purchasedCustomer: async (req, res) => {
+       
         const mailOptions = {
             from: process.env.USER_EMAIL,
-            to: [`korijunior107@gmail.com`,`joaninasender@gmail.com`],
+            to: [`korijunior107@gmail.com`, `joaninasender@gmail.com`],
             subject: `Purchase`,
             template: 'purchase',
             context: {
