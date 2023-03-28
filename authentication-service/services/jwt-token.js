@@ -6,7 +6,7 @@ let secret = process.env.SECRET;
 module.exports = {
     createToken: (data) => {
         try {
-            let token = jwt.sign(data, secret, { expiresIn: '6hr' });
+            let token = jwt.sign(data, secret, { expiresIn: '24h' });
             return token
         } catch (error) {
             return error
@@ -14,7 +14,7 @@ module.exports = {
     },
     validateToken: (token) => {
         try {
-            let data =  jwt.verify(token, secret)
+            let data = jwt.verify(token, secret)
             return data
         } catch (error) {
             return error
