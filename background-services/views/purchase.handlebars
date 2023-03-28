@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/styles/welcome.css">
+    <title>Welcome Email</title>
+    <style>
+        p {
+            margin: none;
+            margin-top: 1vh;
+            font-size: 14px;
+        }
+
+        h2,
+        .regards,
+        small {
+            color: #0ed3da;
+        }
+
+        .login {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid #0ed3da;
+            width: 70vw;
+        }
+
+        thead td {
+            border-right: 1px solid #0ed3da;
+            padding: 1vh;
+            border-bottom: 1px solid #0ed3da;
+        }
+
+        tbody td {
+            border-bottom: 1px solid #0ed3da;
+            padding-left: 1vh;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Dear,{{name}}! </h2>
+
+    <p> We would like to thank you for your recent purchase on our platform! We appreciate your business and hope that
+        you are satisfied with your products.</p>
+
+    <p>As per your purchase, we would like to provide you with a summary of your order and the loyalty points you have
+        accrued:</p>
+    <p> Products Purchased:</p>
+    <table>
+        <thead>
+            <td>#</td>
+            <td>product</td>
+            <td>quantity</td>
+            <td>Total</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Ringoz</td>
+                <td>5</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Bites</td>
+                <td>5</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Cakes</td>
+                <td>5</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>Total</b></td>
+                <td><b>1500</b></td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin: 0; margin-top:"0.5vh">Loyalty Points Accrued: <b>15</b></p>
+    <p>Total Loyalty Points: <b>55</b></p>
+
+    <p>We would also like to remind you that you can redeem your loyalty points on future purchases for discounts and
+        other benefits.
+    <p>If you have any questions or concerns regarding your purchase or loyalty points, please do not hesitate to
+        <a href="https://wa.me/+254706306415">contact </a>our customer support team . We
+        are always happy to assist you.
+    </p>
+
+    <p>Thank you for choosing <b>{{company}}</b>. We look forward to serving you again soon!</p>
+
+    <p style="margin-bottom: 0;">Best regards</p>
+    <small><b>{{company}}.org</b></small><br>
+    <small><b>+254706306415</b></small>
+</body>
+
+</html>
