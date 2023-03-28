@@ -1,3 +1,5 @@
+const { sendMail } = require("../services/node-mailer")
+
 module.exports = {
     // User
     addUser: async (req, res) => {
@@ -18,6 +20,27 @@ module.exports = {
             }
         }
         const response = await sendMail(mailOptions)
+        res.status(200).json(response)
+    },
+    // admin new products need approval
+    approveProduct: async (req, res) => {
+        const mailOptions = {
+            from: process.env.USER_EMAIL,
+            to: [`korijunior107@gmail.com`],
+            subject: `New product`,
+            template: 'product',
+            context: {
+                name: `Rick Sanches`,
+                company: 'ClientHive',
+                productName: 'Ringoz',
+                proDescription: 'The best food to kill your teeth',
+                productCategory: 'Bites and others',
+                price: '$3',
+                addedBy: 'Maiko'
+            }
+        }
+        const response = await sendMail(mailOptions)
+        console.log(response)
         res.status(200).json(response)
     }
 }
