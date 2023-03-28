@@ -2,10 +2,10 @@ const productsRouter = require('express').Router()
 
 const { addProduct, updateProduct, getAllProducts, getSingleProduct, deleteProduct } = require('../controllers/products-controllers')
 const { SchemaValidateMiddleware } = require('../middlewares/schema-validate')
-const { createProductSchema,updateProductSchema } = require('../services/joi-services')
+const { createProductSchema, updateProductSchema } = require('../services/joi-services')
 
 
-productsRouter.post('/add', (req, res, next) => { SchemaValidateMiddleware(req, res, next, createProductSchema) }, addProduct)
+productsRouter.post('/add',(req, res, next) => { SchemaValidateMiddleware(req, res, next, createProductSchema) },addProduct)
 productsRouter.get('/all', getAllProducts)
 productsRouter.get('/single/:productId', getSingleProduct)
 productsRouter.patch('/update', (req, res, next) => { SchemaValidateMiddleware(req, res, next, updateProductSchema) }, updateProduct)
