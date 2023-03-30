@@ -25,6 +25,7 @@ module.exports = {
                     .input('gender', gender)
                     .input('email', email)
                     .execute(`add_customer`)
+                    console.log("added",data)
                 if (data.rowsAffected.includes(1)) {
                     axios.post(`${mailRoute}/customer`, req.body, {
                         headers: {
@@ -60,6 +61,7 @@ module.exports = {
                     .input('role', role)
                     .input('password', hash)
                     .execute(`add_user`)
+                    console.log("added",data)
                 if (data.rowsAffected.includes(1)) {
                     maildata = [req.body, { crytoPassword }]
                     axios.post(`${mailRoute}/add-user`, req.body,
@@ -114,20 +116,43 @@ module.exports = {
         }
     },
     updateUserDetails: async (req, res) => {
-        const { id, fullName, email, phone } = req.body
-        try {
-            await pool.connect()
-            let data = await pool.request()
-                .input('user_id', id)
-                .input('new_full_name', fullName)
-                .input('new_email', email)
-                .input('new_phone', phone)
-                .execute(`update_user_det`)
-            data.rowsAffected.includes(1) ?
-                res.status(200).json({ message: "User details updated successfully" })
-                : res.status(400).json({ message: `User with id:{${id}} does not exist` })
-        } catch (error) {
-            res.status(400).json(error.originalError['info'].message)
+        console.log('kumefikwooooooooooo')
+        const { id, fullName, email, phone, password } = req.body
+        console.log(req.body)
+        if (password) {
+            let hash = await bcrypt.hash(password, 8)
+            console.log("hash", hash)
+            try {
+                await pool.connect()
+                let data = await pool.request()
+                    .input('user_id', id)
+                    .input('new_full_name', fullName)
+                    .input('new_email', email)
+                    .input('new_phone', phone)
+                    .input('password', hash)
+                    .execute(`update_user_det`)
+                data.rowsAffected.includes(1) ?
+                    res.status(200).json({ message: "User details updated successfully" })
+                    : res.status(400).json({ message: `User with id:{${id}} does not exist` })
+            } catch (error) {
+                res.status(400).json(error.originalError['info'].message)
+            }
+        } else {
+            try {
+                await pool.connect()
+                let data = await pool.request()
+                    .input('user_id', id)
+                    .input('new_full_name', fullName)
+                    .input('new_email', email)
+                    .input('new_phone', phone)
+                    .execute(`update_user_det`)
+                data.rowsAffected.includes(1) ?
+                    res.status(200).json({ message: "User details updated successfully" })
+                    : res.status(400).json({ message: `User with id:{${id}} does not exist` })
+            } catch (error) {
+                console.log(error)
+                res.status(400).json(error.originalError['info'].message)
+            }
         }
     },
 

@@ -56,7 +56,7 @@ AS
 BEGIN
   SELECT *
   FROM users
-  WHERE role <> 'customer'
+  WHERE role NOT IN ('customer','staff')
 END
 GO
 
@@ -65,14 +65,18 @@ CREATE PROCEDURE update_user_det
   @user_id INT,
   @new_full_name VARCHAR(255) = NULL,
   @new_email VARCHAR(255) = NULL,
-  @new_phone VARCHAR(30) = NULL
+  @new_phone VARCHAR(30) = NULL,
+  @password NVARCHAR(255) = NULL
+
 AS
 BEGIN
   UPDATE users
     SET 
         full_name = ISNULL(@new_full_name, full_name),
         email = ISNULL(@new_email, email),
-        phone = ISNULL(@new_phone, phone)
+        phone = ISNULL(@new_phone, phone),
+        [password] =ISNULL(@password, [password])
+
     WHERE id = @user_id;
 
   -- update customers table if there exits
@@ -269,7 +273,7 @@ CREATE PROCEDURE add_category_admin
   @category_name VARCHAR(255),
   @description NVARCHAR(255),
   @added_by INT,
-  @approved BIT 
+  @approved BIT
 
 AS
 BEGIN
@@ -329,6 +333,7 @@ AS
 BEGIN
   SELECT *
   FROM categories
+  WHERE approved = 1
 END
 GO
 -- get single category
@@ -375,7 +380,7 @@ BEGIN
   INSERT INTO products
     ([name],[description],added_by, price, quantity, added_on, category_id,updated_by,approved)
   VALUES
-    (@name, @description, @added_by, @price, @quantity, GETDATE(), @category_id, @added_by,@approved)
+    (@name, @description, @added_by, @price, @quantity, GETDATE(), @category_id, @added_by, @approved)
 END
 GO
 
@@ -419,6 +424,7 @@ BEGIN
   SELECT *
   FROM products
   WHERE isdeleted = 0
+  ORDER BY approved DESC
 END
 GO
 --5. Query single product
