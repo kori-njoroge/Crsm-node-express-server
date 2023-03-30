@@ -46,7 +46,16 @@ const editCustomerDet =Joi.object({
     id:Joi.string().alphanum().required(),
     fullName:Joi.string().optional(),
     phone:Joi.number().min(9).optional(),
-    email:Joi.string().email({minDomainSegments: 2, tlds:['*']}).optional(),
+    email:Joi.string().email({minDomainSegments: 2, tlds:['*']}).optional()
 }).or('fullName','phone','email')
 
-module.exports = { addUserSchema, loginSchema, customerSchema,singleCust,editCustomerDet}
+const editUsersDetails =Joi.object({
+    id:Joi.string().alphanum().required(),
+    fullName:Joi.string().optional(),
+    phone:Joi.number().min(9).optional(),
+    email:Joi.string().email({minDomainSegments: 2, tlds:['*']}).optional(),
+    password:Joi.string().min(6).optional()
+}).or('fullName','phone','email','password')
+
+
+module.exports = { addUserSchema, loginSchema, customerSchema,singleCust,editCustomerDet,editUsersDetails}
