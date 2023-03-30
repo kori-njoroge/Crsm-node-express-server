@@ -6,7 +6,8 @@ const createCategorySchema = Joi.object({
     role: Joi.string().required(),
     categoryName: Joi.string().required(),
     description: Joi.string().required(),
-    addedBy: Joi.number().required()
+    addedBy: Joi.number().required(),
+    token: Joi.string().required()
 })
 
 const updateCategorySchema = Joi.object({
