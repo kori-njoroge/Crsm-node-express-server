@@ -3,6 +3,7 @@ const cors = require('cors')
 const { categoryRouter } = require('./routes/category-routes');
 const { productsRouter } = require('./routes/products-routes');
 const { salesRouter } = require('./routes/sales-routes');
+const { reportsRouter } = require('./routes/reports-routes');
 require('dotenv').config()
 
 
@@ -26,6 +27,7 @@ app.get('/products', (req, res) => {
 app.use('/products', productsRouter)
 app.use('/products/category', categoryRouter)
 app.use('/products/sales', salesRouter)
+app.use('/products/reports', reportsRouter)
 
 const port = process.env.PORT || 8010
 app.listen(port, console.log(`products service on port ${port}`))

@@ -136,7 +136,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 ###
 GET  http://localhost:4000/products/all
 Content-Type: application/json
-Authorization: Bearer 5F82D8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMTk4NTI0LCJleHAiOjE2ODAyODQ5MjR9.lDSX0DI0qyIrfrtMYEnLQKXD7DWTx_fmz2MsomKj-iY
 
 # single product
 ###
@@ -150,3 +150,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 DELETE  http://localhost:4000/products/delete/CAEAE7
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3YWFAZ21haWwuY29tIiwiaWF0IjoxNjc5ODk0NTgxLCJleHAiOjE2Nzk5MTYxODF9.-OWNaxIE7hrW1tRAWOhmZpjxHIIRHskjlRkD9nnFpyM
+
+
+# REPORTSS
+###
+GET http://localhost:4000/products/reports/count
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMTk4NTI0LCJleHAiOjE2ODAyODQ5MjR9.lDSX0DI0qyIrfrtMYEnLQKXD7DWTx_fmz2MsomKj-iY
