@@ -154,6 +154,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImptdWx3Y
 
 # REPORTSS
 ###
-GET http://localhost:4000/products/reports/count
+GET http://localhost:4000/products/reports/top-customers
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMTk4NTI0LCJleHAiOjE2ODAyODQ5MjR9.lDSX0DI0qyIrfrtMYEnLQKXD7DWTx_fmz2MsomKj-iY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMjA2MzU3LCJleHAiOjE2ODAyOTI3NTd9.cON5Mblwqgjh2NE_FKqMv6-HHE34FU13T4KEP1nAaBo

@@ -12,18 +12,19 @@ module.exports = {
         try {
             await pool.connect()
             let data = await pool.request().execute(`get_count_all`)
-            res.json(data.recordsets)
+            res.status(200).json(data.recordsets)
         } catch (error) {
-            res.json(error)
+            res.status(500).json(error)
         }
     },
-    getTopCustomers:async(req,res) =>{
+    getTopCustomers: async (req, res) => {
         try {
             await pool.connect()
             let data = await pool.request().execute(`get_top_customers`)
             console.log(data)
+            res.status(200).json(data.recordset)
         } catch (error) {
-            
+            res.status(500).json(error)
         }
     }
 }
