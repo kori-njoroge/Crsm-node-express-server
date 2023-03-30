@@ -29,3 +29,5 @@ DROP PROCEDURE IF EXISTS delete_product
 DROP PROCEDURE IF EXISTS update_product
 DROP PROCEDURE IF EXISTS get_products
 DROP PROCEDURE IF EXISTS get_product_by_id
+DROP PROCEDURE IF EXISTS get_count_all
+DROP PROCEDURE IF EXISTS get_top_customers

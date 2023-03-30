@@ -438,4 +438,31 @@ BEGIN
 END
 GO
 
+-- REPORTS SECTIONS
+CREATE PROCEDURE get_count_all
+AS
+BEGIN
+  SELECT 'users' AS TableName, COUNT(*) AS TableCount
+  FROM users;
+  SELECT 'customers' AS TableName, COUNT(*) AS TableCount
+  FROM products;
+  SELECT 'sales' AS TableName, COUNT(*) AS TableCount
+  FROM sales;
+  SELECT 'products' AS TableName, COUNT(*) AS TableCount
+  FROM products;
+  SELECT 'categories' AS TableName, COUNT(*) AS TableCount
+  FROM categories;
+END
+GO
+
+CREATE PROCEDURE get_top_customers
+AS
+BEGIN
+  SELECT TOP 3
+    full_name, loyalty_points
+  FROM Customers
+  ORDER BY loyalty_points DESC;
+END
+GO
+
 
