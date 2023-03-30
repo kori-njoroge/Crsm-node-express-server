@@ -7,7 +7,7 @@ GET http://localhost:4000/notifications/
 ###
 GET    http://localhost:4000/users/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imtvcmluam9yb2dlNjNAZ21haWwuY29tIiwiaWF0IjoxNjgwMTU4NTU2LCJleHAiOjE2ODAyNDQ5NTZ9.qASHagbJ8O7LHQK9C66uEly_S8MOxSZkwkg0ObG1vp8
 
 # add users
 ###
@@ -15,14 +15,14 @@ POST   http://localhost:4000/users/signup
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQGdtYWlsLmNvbSIsImlhdCI6MTY3OTc2NDgwMiwiZXhwIjoxNjc5Nzg2NDAyfQ._DrbL5XKciAo2TZlf6Fnf6AFqitbuecYR5D50zkF-og
 
-# {
-#     "fullName":"Rick Sanchez",
-#     "phone":115834321,
-#     "email":"ricksanchez@gmail.com",
-#     "gender":"male",
-#     "role":"customer",
-#     "password":"mypass1"
-# }
+{
+    "fullName":"Rick Sanchez",
+    "phone":11583430021,
+    "email":"ric@gmail.com",
+    "gender":"male"    ,
+    "role":"staff",
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM" 
+}
 
 # {
 #     "fullName":"Morty Smith",
@@ -50,14 +50,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmFrQ
 #     "role":"customer"    
 # }
 
-{
-    "fullName":"Joaninah J",
-    "phone":254115834321,
-    "email":"korinjoroge63@gmail.com",
-    "gender":"female",
-    "role":" Super Admin",
-    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM"    
-}
+# {
+#     "fullName":"Joaninah J",
+#     "phone":254115834321,
+#     "email":"korinjoroge63@gmail.com",
+#     "gender":"female",
+#     "role":" Super Admin",
+#     "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM"    
+# }
 
 
 # login to the system
@@ -76,25 +76,23 @@ Content-Type: application/json
 ###
 PATCH  http://localhost:4000/users/update-user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imtvcmluam9yb2dlNjNAZ21haWwuY29tIiwiaWF0IjoxNjgwMTc1Mjk4LCJleHAiOjE2ODAyNjE2OTh9.fVMlBltpVaMLC9h6xO9gnMQaJQgo47OOdv4rRAnv_Sc
 
 {
     "id":"179",
-    "fullName":"Jane Muthoni",
-    "email":"muthakjane@example.com",
-    "phone":"25478530933"
+    "password":"janenet"
 }
 
 # add customer
 ###
 POST http://localhost:4000/users/add-customer
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY3OTkxODcyNSwiZXhwIjoxNjc5OTQwMzI1fQ.NV45iwD_RbcczhCKeAP780vX82WsVqaa6t8hXHIpV2M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imtvcmluam9yb2dlNjNAZ21haWwuY29tIiwiaWF0IjoxNjgwMTgxMDg3LCJleHAiOjE2ODAyNjc0ODd9.xNhHN8CDqNkxcqbbggZs2nGmLA8_4mVfiM29ceBffiQ
 
 {
     "fullName": "Mark Msee",
-    "phone": "254706007400",
-    "email": "mustafa@gmail.com",
+    "phone": "254787007400",
+    "email": "musfa@gmail.com",
     "gender":"male"
 }
 
@@ -135,7 +133,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2Vhb
 ###
 PATCH  http://localhost:4000/users/edit-customer
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhvbmlqYW5lQGV4YW1wbGUuY29tIiwiaWF0IjoxNjc5OTgwMTI5LCJleHAiOjE2ODAwMDE3Mjl9.Md2Av5JPrRO3pts2QAE7FP2R2FIrcIMJV5yvDLvdoq8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imtvcmluam9yb2dlNjNAZ21haWwuY29tIiwiaWF0IjoxNjgwMTc1Mjk4LCJleHAiOjE2ODAyNjE2OTh9.fVMlBltpVaMLC9h6xO9gnMQaJQgo47OOdv4rRAnv_Sc
 
 {
     "id":"113",

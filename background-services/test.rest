@@ -22,5 +22,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdha
 
 # purchased
 ###
-POST  http://localhost:4000/notifications/new-product
+POST  http://localhost:4000/notifications/new-category
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VhbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY4MDE2NjIyNywiZXhwIjoxNjgwMjUyNjI3fQ.ndWFNM17Fpo3H-5l-HnMpktvU9NiEj2toN4hAaNH4is
+
+
+#category
+###
+POST  http://localhost:4000/notifications/new-category
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDA5MTA3LCJleHAiOjE2ODAwOTU1MDd9.pCNA9pMWmyW9CoE5DTVX6TGnqtelAfYmCtDvEtbOGho
