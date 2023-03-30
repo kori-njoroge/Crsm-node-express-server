@@ -1,3 +1,4 @@
+const { default: axios } = require('axios')
 const sql = require('mssql')
 require('dotenv').config()
 
@@ -8,10 +9,12 @@ const pool = new sql.ConnectionPool(config)
 let date = new Date
 date = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
 
+const mailRoute = 'http://localhost:4000/notifications/'
+
 module.exports = {
     // category
     createCategory: async (req, res) => {
-        const { categoryName, description, addedBy, role } = req.body
+        const { categoryName, description, addedBy, role, token } = req.body
         if (role.toLowerCase() === 'staff') {
             try {
                 await pool.connect()
@@ -20,11 +23,23 @@ module.exports = {
                     .input('description', description)
                     .input('added_by', addedBy)
                     .execute(`add_category_staff`)
-                data.rowsAffected.length && res.status(200).json({ message: `Successfully added new category: (${categoryName})  on ${date}` })
+                if (data.rowsAffected.includes(1)) {
+                    axios.post(`${mailRoute}/new-category`, req.body, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            data: JSON.stringify(req.body)
+                        }
+                    }).then(reply => {
+                        reply.data.includes('OK') && res.status(200).json({ message: `Successfully added new category: (${categoryName})  on ${date}` })
+                    }).catch(err => {
+                        res.status(500).json({ message: "Try again later" })
+                    })
+                }
             } catch (error) {
                 error.originalError.message.includes('Violation of UNIQUE KEY constraint') ?
                     res.status(400).json({ message: `Category {${categoryName}} already exists` }) :
                     res.status(400).json(error.originalError)
+                // res.json(error)
             }
         } else {
             try {
