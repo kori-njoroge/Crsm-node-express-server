@@ -10,7 +10,6 @@ const pool = new sql.ConnectionPool(config)
 
 const mailRoute = 'http://localhost:4000/notifications/'
 
-// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11bmdhaWpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjgwMDEwMDY5LCJleHAiOjE2ODAwOTY0Njl9.BSUcEhFrTf1Yvi7tvJMVqJ7Hi3QeJejHJKZIKNsRdqM'
 
 module.exports = {
     //users
